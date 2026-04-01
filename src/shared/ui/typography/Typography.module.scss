@@ -7,6 +7,16 @@
   line-height: 110%;
   letter-spacing: -0.02em;
   color: #ffffff;
+
+  @media (min-width: 768px) {
+    font-size: 40px;
+    line-height: 110%;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 52px;
+    line-height: 110%;
+  }
 }
 
 .lead {
@@ -30,4 +40,20 @@
   letter-spacing: -0.02em;
   color: #ffffff;
   text-align: center;
+}
+
+.displayM {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: 110%;
+  }
 }

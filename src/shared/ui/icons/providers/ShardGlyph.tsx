@@ -1,4 +1,3 @@
-/** Provider: Shard (100×100). */
 export function ShardGlyph({ className }: { className?: string }) {
   return (
     <svg

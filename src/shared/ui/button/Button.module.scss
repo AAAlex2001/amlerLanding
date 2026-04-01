@@ -24,7 +24,6 @@
   }
 }
 
-/* Text buttons: L = 52px, M = 40px height */
 .size_l:not(.iconOnly) {
   min-height: 52px;
   padding: 8px 12px;
@@ -119,7 +118,6 @@
   pointer-events: none;
 }
 
-/* CTA disabled: как в макете — приглушённый оливковый, не общий opacity на всём */
 .variant_cta:disabled,
 .variant_cta.disabled {
   opacity: 1;

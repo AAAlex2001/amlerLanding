@@ -1,6 +1,5 @@
 type Props = { className?: string };
 
-/** Иллюстрация слайда 3: хранилище / выгрузка. */
 export function SliderVaultIllustration({ className }: Props) {
   return (
     <img

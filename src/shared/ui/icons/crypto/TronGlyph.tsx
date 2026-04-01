@@ -6,7 +6,6 @@ export type TronGlyphSize = 20 | 40;
 
 export type TronGlyphProps = {
   className?: string;
-  /** 20×20: обычная или disabled; 40×40: только обычная */
   size?: TronGlyphSize;
   disabled?: boolean;
 };

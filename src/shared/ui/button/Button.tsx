@@ -8,7 +8,6 @@ export type ButtonSize = "m" | "l";
 export type ButtonProps = {
   variant?: ButtonVariant;
   size?: ButtonSize;
-  /** Колонка навигации: кнопка на всю высоту, иконка по центру. */
   iconRail?: boolean;
 } & ButtonHTMLAttributes<HTMLButtonElement>;
 

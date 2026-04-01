@@ -1,22 +1,73 @@
 .root {
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
   width: 100%;
-  max-width: 600px;
-  margin-inline: auto;
+  max-width: 100%;
   padding: 0;
   min-width: 0;
+  align-self: stretch;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: 688px;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1300px;
+    width: 100%;
+    margin-inline: auto;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.title {
+  flex-shrink: 0;
+  color: #ffffff;
+
+  @media (min-width: 1440px) {
+    flex: 0 0 auto;
+  }
 }
 
 .swiperWrap {
   box-sizing: border-box;
-  width: 100%;
   min-width: 0;
+  flex: 1 1 auto;
+  max-width: 100%;
   overflow: hidden;
+
+  @media (min-width: 768px) {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 1440px) {
+    flex: 0 1 auto;
+    width: max-content;
+    max-width: calc(100% - 180px);
+    overflow: hidden;
+  }
 }
 
 .swiper {
   width: 100%;
   overflow: visible;
+
+  @media (min-width: 1440px) {
+    width: max-content;
+    max-width: 100%;
+  }
 }
 
 .slide {
@@ -28,18 +79,10 @@
   justify-content: center;
 }
 
-/* Как у вкладок: muted → белый, transition 0.15s ease; для img — brightness вместо color */
 .logoWrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: filter 0.15s ease;
-  filter: brightness(1);
-}
-
-.logoWrap:hover {
-  filter: brightness(3.33);
 }
 
 .logo {

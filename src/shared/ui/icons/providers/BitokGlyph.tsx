@@ -1,4 +1,3 @@
-/** Provider: Bitok (100×100). */
 export function BitokGlyph({ className }: { className?: string }) {
   return (
     <svg

@@ -13,6 +13,9 @@ export type TypographyPProps = WithClass &
 export type TypographyH4Props = WithClass &
   Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
 
+export type TypographyDisplayMProps = WithClass &
+  Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
+
 export function TypographyH1({ children, className, ...rest }: TypographyH1Props) {
   return (
     <h1 className={cn(styles.heading1, className)} {...rest}>
@@ -34,5 +37,17 @@ export function TypographyH4({ children, className, ...rest }: TypographyH4Props
     <h4 className={cn(styles.heading4, className)} {...rest}>
       {children}
     </h4>
+  );
+}
+
+export function TypographyDisplayM({
+  children,
+  className,
+  ...rest
+}: TypographyDisplayMProps) {
+  return (
+    <h2 className={cn(styles.displayM, className)} {...rest}>
+      {children}
+    </h2>
   );
 }

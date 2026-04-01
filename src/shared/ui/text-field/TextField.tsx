@@ -8,7 +8,6 @@ export type TextFieldProps = Omit<
   "size"
 > & {
   label: string;
-  /** Скрыть визуальный лейбл (доступность: текст остаётся для скринридеров) */
   hideLabel?: boolean;
   error?: string;
   startSlot?: ReactNode;

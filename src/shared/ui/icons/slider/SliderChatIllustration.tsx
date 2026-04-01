@@ -1,6 +1,5 @@
 type Props = { className?: string };
 
-/** Иллюстрация слайда 4: чат / документы. */
 export function SliderChatIllustration({ className }: Props) {
   return (
     <img

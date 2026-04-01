@@ -76,7 +76,6 @@
   }
 }
 
-/* Открыта выпадашка — то же «прожатое», что и hover */
 .triggerDarkOpen {
   background: var(--lang-bg-hover);
 }
@@ -111,7 +110,6 @@
   list-style: none;
   border-radius: 12px;
   backdrop-filter: blur(10px);
-  /* Без щелей между скруглениями пунктов — подложка не «просвечивает» */
   overflow: hidden;
 }
 

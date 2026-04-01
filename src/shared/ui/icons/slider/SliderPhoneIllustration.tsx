@@ -1,6 +1,5 @@
 type Props = { className?: string };
 
-/** Иллюстрация слайда 2: узкий телефон (79×160 в макете). */
 export function SliderPhoneIllustration({ className }: Props) {
   return (
     <img

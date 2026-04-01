@@ -2,6 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import cn from "classnames";
+import { TypographyDisplayM } from "@/shared/ui";
 import styles from "./Partners.module.scss";
 import "swiper/css";
 
@@ -14,20 +15,21 @@ const PARTNER_LOGOS = [
 
 export type PartnersProps = {
   className?: string;
+  title?: string;
 };
 
-export function Partners({ className }: PartnersProps) {
+export function Partners({
+  className,
+  title = "Нам доверяют",
+}: PartnersProps) {
   return (
-    <section
-      className={cn(styles.root, className)}
-      aria-label="Партнёры"
-    >
+    <section className={cn(styles.root, className)} aria-label="Партнёры">
+      <TypographyDisplayM className={styles.title}>{title}</TypographyDisplayM>
       <div className={styles.swiperWrap}>
         <Swiper
           className={styles.swiper}
           slidesPerView="auto"
-          spaceBetween={40}
-          loop
+          spaceBetween={10}
           centeredSlides={false}
         >
           {PARTNER_LOGOS.map((item, i) => (

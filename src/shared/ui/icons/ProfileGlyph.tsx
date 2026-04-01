@@ -1,4 +1,3 @@
-/** Profile icon from design kit (circle + base). */
 export function ProfileGlyph({ className }: { className?: string }) {
   return (
     <svg

@@ -44,8 +44,10 @@ const sliderSlides = [
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Hero {...heroCopy} />
-      <Slider slides={sliderSlides} />
+      <div className={styles.heroSliderRow}>
+        <Hero {...heroCopy} />
+        <Slider slides={sliderSlides} />
+      </div>
       <Partners />
     </main>
   );

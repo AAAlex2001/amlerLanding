@@ -1,4 +1,3 @@
-/** Provider: Cointkit (100×100). */
 export function CointkitGlyph({ className }: { className?: string }) {
   return (
     <svg

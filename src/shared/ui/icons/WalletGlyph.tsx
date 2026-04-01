@@ -1,4 +1,3 @@
-/** Упрощённая иконка кошелька (как в макете). */
 export function WalletGlyph({ className }: { className?: string }) {
   return (
     <svg
