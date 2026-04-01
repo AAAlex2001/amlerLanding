@@ -11,7 +11,7 @@ export {
   type TabProps,
   type TabsOrientation,
 } from "./tabs";
-export { TextField, type TextFieldProps } from "./text-field";
+export { Input, type InputProps } from "./input";
 export {
   LanguageSelect,
   type LanguageSelectProps,

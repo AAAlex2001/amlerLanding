@@ -1,9 +1,9 @@
 import { useId, type InputHTMLAttributes, type ReactNode } from "react";
 import cn from "classnames";
 import { WalletGlyph } from "@/shared/ui/icons";
-import styles from "./TextField.module.scss";
+import styles from "./Input.module.scss";
 
-export type TextFieldProps = Omit<
+export type InputProps = Omit<
   InputHTMLAttributes<HTMLInputElement>,
   "size"
 > & {
@@ -22,7 +22,7 @@ function DefaultStartSlot() {
   );
 }
 
-export function TextField({
+export function Input({
   label,
   hideLabel = false,
   error,
@@ -31,7 +31,7 @@ export function TextField({
   className,
   placeholder = "Placeholder",
   ...inputProps
-}: TextFieldProps) {
+}: InputProps) {
   const fieldId = useId();
   const showError = Boolean(error);
 

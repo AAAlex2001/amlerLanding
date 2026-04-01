@@ -7,6 +7,8 @@ export { TgGlyph } from "./TgGlyph";
 export { WalletGlyph } from "./WalletGlyph";
 export { FlagRuGlyph } from "./FlagRuGlyph";
 export { FlagUkGlyph } from "./FlagUkGlyph";
+export { AmlerLogo } from "./AmlerLogo";
+export { AmlerLogoMark } from "./AmlerLogoMark";
 export * from "./providers";
 export * from "./crypto";
 export * from "./slider";

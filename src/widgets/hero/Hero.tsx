@@ -1,4 +1,4 @@
-import { Button, TextField, TypographyH1, TypographyP } from "@/shared/ui";
+import { Button, Input, TypographyH1, TypographyP } from "@/shared/ui";
 import {
   BitcoinGlyph,
   ChevronRightGlyph,
@@ -43,7 +43,7 @@ export function Hero({
 
       <div className={styles.actions}>
         <div className={styles.inputRow}>
-          <TextField
+          <Input
             className={styles.field}
             label={inputLabel}
             hideLabel

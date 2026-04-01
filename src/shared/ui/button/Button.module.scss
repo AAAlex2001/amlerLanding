@@ -133,3 +133,12 @@
 .variant_icon.disabled {
   opacity: 0.45;
 }
+
+.iconSlot {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+}
