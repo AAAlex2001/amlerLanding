@@ -82,26 +82,37 @@ export function HowItWorksStep1Illustration({
           <stop offset={1} stopColor="white" stopOpacity={0.05} />
         </linearGradient>
 
-        <filter id={`${uid}_blur10`} x="-40%" y="-40%" width="180%" height="180%">
+        {/* feGaussianBlur: один кадр с контуром, без отложенного backdrop-filter в foreignObject */}
+        <filter id={`${uid}_blur10`} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur in="SourceGraphic" stdDeviation={5} />
         </filter>
-        <filter id={`${uid}_blur5`} x="-40%" y="-40%" width="180%" height="180%">
+        <filter id={`${uid}_blur5`} x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur in="SourceGraphic" stdDeviation={2.5} />
         </filter>
       </defs>
 
-      {/* Frame 0 — Figma export: монета + кошелёк с backdrop blur */}
+      {/* Frame 0 — монета + кошелёк (свечение под тем же fill, что в макете) */}
       <motion.g animate={{ opacity: showHidden ? 0 : 1 }} transition={FADE}>
         <circle cx={63} cy={40} r={40} fill="#9A9761" />
         <path fillRule="evenodd" clipRule="evenodd" d={BTC_PATH} fill="white" />
-        <BlurBackdrop x={-16} y={23} w={160} h={130} blurPx={10} clipId={walletBlurClip} />
+        <path
+          d={WALLET_BODY_D}
+          fill={`url(#${uid}_g0)`}
+          fillOpacity={0.45}
+          filter={`url(#${uid}_blur10)`}
+        />
         <path
           d={WALLET_BODY_D}
           fill={`url(#${uid}_g0)`}
           fillOpacity={0.3}
           stroke={`url(#${uid}_g1)`}
         />
-        <BlurBackdrop x={75} y={58} w={66} h={60} blurPx={5} clipId={pocketBlurClip} />
+        <path
+          d={POCKET_D}
+          fill={`url(#${uid}_g2)`}
+          fillOpacity={0.45}
+          filter={`url(#${uid}_blur5)`}
+        />
         <path d={POCKET_D} fill={`url(#${uid}_g2)`} stroke={`url(#${uid}_g3)`} />
         <circle cx={103} cy={88} r={8} fill="white" />
       </motion.g>

@@ -1,6 +1,5 @@
 "use client";
 
-import type { HTMLAttributes } from "react";
 import { useId } from "react";
 import { motion } from "framer-motion";
 import { useHowItWorksCardInteraction } from "./HowItWorksCardInteractionContext";
@@ -27,8 +26,6 @@ export function HowItWorksStep2Illustration({
   const uid = useId().replace(/:/g, "");
   const interactive = useHowItWorksCardInteraction();
 
-  const lensBlurClip = `${uid}_lensBlurClip`;
-
   return (
     <svg
       className={className}
@@ -40,9 +37,9 @@ export function HowItWorksStep2Illustration({
       aria-hidden
     >
       <defs>
-        <clipPath id={lensBlurClip} transform="translate(-29.6073 -27.6073)">
-          <circle cx={84.085} cy={82.085} r={44.6153} />
-        </clipPath>
+        <filter id={`${uid}_lensGlow`} x="-45%" y="-45%" width="190%" height="190%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation={2.35} />
+        </filter>
         <linearGradient id={`${uid}_g0`} x1={84.085} y1={37} x2={84.085} y2={127.17} gradientUnits="userSpaceOnUse">
           <stop stopColor="#B1AF8C" />
           <stop offset={1} stopColor="#9A9761" />
@@ -109,20 +106,14 @@ export function HowItWorksStep2Illustration({
             transform="rotate(-45 112.263 114.06)"
             fill="#9A9761"
           />
-          <foreignObject x={29.6073} y={27.6073} width={108.955} height={108.955}>
-            <div
-              {...({
-                xmlns: "http://www.w3.org/1999/xhtml",
-                style: {
-                  backdropFilter: "blur(4.7px)",
-                  WebkitBackdropFilter: "blur(4.7px)",
-                  clipPath: `url(#${lensBlurClip})`,
-                  height: "100%",
-                  width: "100%",
-                },
-              } as unknown as HTMLAttributes<HTMLDivElement>)}
-            />
-          </foreignObject>
+          <circle
+            cx={84.085}
+            cy={82.085}
+            r={44.6153}
+            fill={`url(#${uid}_g0)`}
+            fillOpacity={0.45}
+            filter={`url(#${uid}_lensGlow)`}
+          />
           <circle
             cx={84.085}
             cy={82.085}
