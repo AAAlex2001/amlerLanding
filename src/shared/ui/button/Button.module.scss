@@ -52,6 +52,14 @@
   height: 40px;
 }
 
+.iconOnly.iconRail {
+  flex: 1 1 auto;
+  align-self: stretch;
+  width: 40px;
+  min-height: 40px;
+  height: auto;
+}
+
 .variant_cta {
   background: var(--btn-cta-default);
   color: var(--btn-on-dark);

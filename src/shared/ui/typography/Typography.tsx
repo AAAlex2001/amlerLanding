@@ -10,6 +10,9 @@ export type TypographyH1Props = WithClass &
 export type TypographyPProps = WithClass &
   Omit<HTMLAttributes<HTMLParagraphElement>, "className">;
 
+export type TypographyH4Props = WithClass &
+  Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
+
 export function TypographyH1({ children, className, ...rest }: TypographyH1Props) {
   return (
     <h1 className={cn(styles.heading1, className)} {...rest}>
@@ -23,5 +26,13 @@ export function TypographyP({ children, className, ...rest }: TypographyPProps) 
     <p className={cn(styles.lead, className)} {...rest}>
       {children}
     </p>
+  );
+}
+
+export function TypographyH4({ children, className, ...rest }: TypographyH4Props) {
+  return (
+    <h4 className={cn(styles.heading4, className)} {...rest}>
+      {children}
+    </h4>
   );
 }

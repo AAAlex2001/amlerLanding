@@ -8,3 +8,4 @@ export { FlagRuGlyph } from "./FlagRuGlyph";
 export { FlagUkGlyph } from "./FlagUkGlyph";
 export * from "./providers";
 export * from "./crypto";
+export * from "./slider";

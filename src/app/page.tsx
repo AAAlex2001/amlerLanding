@@ -1,3 +1,10 @@
+import { Slider } from "@/features/slider";
+import {
+  SliderChatIllustration,
+  SliderPhoneIllustration,
+  SliderTimerIllustration,
+  SliderVaultIllustration,
+} from "@/shared/ui/icons";
 import { Hero } from "@/widgets/hero";
 import styles from "./page.module.scss";
 
@@ -14,10 +21,30 @@ const heroCopy = {
   ctaText: "Проверить кошелёк",
 };
 
+const sliderSlides = [
+  {
+    title: "Быстрая\nпроверка кошелька",
+    illustration: <SliderTimerIllustration />,
+  },
+  {
+    title: "Удобный\nTelegram-бот",
+    illustration: <SliderPhoneIllustration />,
+  },
+  {
+    title: "Недорогая стоимость\nпроверки",
+    illustration: <SliderVaultIllustration />,
+  },
+  {
+    title: "Подробные отчеты\nв удобных форматах",
+    illustration: <SliderChatIllustration />,
+  },
+];
+
 export default function Home() {
   return (
     <main className={styles.main}>
       <Hero {...heroCopy} />
+      <Slider slides={sliderSlides} />
     </main>
   );
 }
