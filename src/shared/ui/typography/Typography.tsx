@@ -14,6 +14,7 @@ export type TypographyPProps = WithClass &
   Omit<HTMLAttributes<HTMLParagraphElement>, "className">;
 
 export type TypographyH4Props = WithClass & {
+  /** center — маркетинговый слайдер; start — карточки AML и т.п. */
   align?: "center" | "start";
 } & Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
 

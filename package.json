@@ -5,7 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:pages": "cross-env NEXT_BASE_PATH=/amlerLanding next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -18,7 +17,6 @@
     "swiper": "^12.1.3"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
