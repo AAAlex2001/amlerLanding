@@ -5,4 +5,5 @@ export { CloseGlyph } from "./CloseGlyph";
 export { ChevronDownGlyph } from "./ChevronDownGlyph";
 export { WalletGlyph } from "./WalletGlyph";
 export { FlagRuGlyph } from "./FlagRuGlyph";
+export { FlagUkGlyph } from "./FlagUkGlyph";
 export { TrxGlyph } from "./TrxGlyph";

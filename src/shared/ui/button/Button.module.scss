@@ -69,7 +69,10 @@
   background: var(--btn-secondary-bg);
   color: var(--btn-on-dark);
 
-  &:hover:not(:disabled),
+  &:hover:not(:disabled) {
+    background: var(--field-bg-active);
+  }
+
   &:active:not(:disabled) {
     background: var(--btn-secondary-bg);
   }

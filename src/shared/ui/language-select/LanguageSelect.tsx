@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import cn from "classnames";
-import { ChevronDownGlyph, FlagRuGlyph } from "@/shared/ui/icons";
+import { ChevronDownGlyph, FlagRuGlyph, FlagUkGlyph } from "@/shared/ui/icons";
 import styles from "./LanguageSelect.module.scss";
 
 export type LanguageSelectVariant = "default" | "invert";
@@ -24,7 +24,10 @@ export type LanguageSelectProps = {
 
 export function LanguageSelect({
   variant = "default",
-  options = [{ value: "ru", label: "RUS" }],
+  options = [
+    { value: "ru", label: "RUS" },
+    { value: "en", label: "ENG" },
+  ],
   value: controlledValue,
   defaultValue,
   onChange,
@@ -68,6 +71,8 @@ export function LanguageSelect({
 
   const isDark = variant === "default";
 
+  const Flag = selected.value === "en" ? FlagUkGlyph : FlagRuGlyph;
+
   return (
     <div ref={rootRef} className={cn(styles.root, className)}>
       <button
@@ -75,6 +80,8 @@ export function LanguageSelect({
         className={cn(
           styles.trigger,
           isDark ? styles.triggerDark : styles.triggerInvert,
+          !isStatic && openState && isDark && styles.triggerDarkOpen,
+          !isStatic && openState && !isDark && styles.triggerInvertOpen,
           isDark &&
             isStatic &&
             demo === "hover" &&
@@ -91,7 +98,7 @@ export function LanguageSelect({
         onClick={() => !isStatic && setOpen((o) => !o)}
       >
         <span className={styles.inner}>
-          <FlagRuGlyph className={styles.flag} />
+          <Flag className={styles.flag} />
           <span className={styles.label}>{selected.label}</span>
         </span>
         <ChevronDownGlyph
@@ -100,23 +107,33 @@ export function LanguageSelect({
       </button>
 
       {openState && !isStatic ? (
-        <ul className={styles.menu} role="listbox">
-          {options.map((opt) => (
-            <li key={opt.value} role="none">
-              <button
-                type="button"
-                role="option"
-                aria-selected={opt.value === value}
-                className={styles.menuItemBtn}
-                onClick={() => {
-                  setValue(opt.value);
-                  setOpen(false);
-                }}
-              >
-                {opt.label}
-              </button>
-            </li>
-          ))}
+        <ul
+          className={cn(styles.menu, isDark ? styles.menuDark : styles.menuInvert)}
+          role="listbox"
+        >
+          {options.map((opt) => {
+            const ItemFlag = opt.value === "en" ? FlagUkGlyph : FlagRuGlyph;
+            return (
+              <li key={opt.value} role="none">
+                <button
+                  type="button"
+                  role="option"
+                  aria-selected={opt.value === value}
+                  className={cn(
+                    styles.menuItem,
+                    isDark ? styles.menuItemDark : styles.menuItemLight,
+                  )}
+                  onClick={() => {
+                    setValue(opt.value);
+                    setOpen(false);
+                  }}
+                >
+                  <ItemFlag className={styles.flag} />
+                  <span className={styles.menuItemLabel}>{opt.label}</span>
+                </button>
+              </li>
+            );
+          })}
         </ul>
       ) : null}
     </div>

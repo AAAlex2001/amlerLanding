@@ -68,6 +68,11 @@
   }
 }
 
+/* Открыта выпадашка — то же «прожатое», что и hover */
+.triggerDarkOpen {
+  background: var(--lang-bg-hover);
+}
+
 .triggerDarkStaticHover,
 .triggerDarkStaticOpen {
   background: var(--lang-bg-hover);
@@ -86,6 +91,10 @@
   }
 }
 
+.triggerInvertOpen {
+  background: var(--lang-invert-open);
+}
+
 .triggerInvertStaticOpen {
   background: var(--lang-invert-open);
 }
@@ -93,30 +102,77 @@
 .menu {
   position: absolute;
   z-index: 10;
-  top: calc(100% + 4px);
+  /* Без зазора к триггеру — иначе просвечивает фон страницы */
+  top: 100%;
   left: 0;
-  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 105px;
   margin: 0;
-  padding: 4px 0;
+  padding: 4px;
   list-style: none;
-  background: rgba(30, 30, 30, 0.95);
-  border-radius: 8px;
+  border-radius: 12px;
   backdrop-filter: blur(10px);
 }
 
-.menuItemBtn {
-  display: block;
-  width: 100%;
+.menuDark {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.menuInvert {
+  background: rgba(242, 242, 242, 0.92);
+}
+
+.menu > li {
   margin: 0;
+  padding: 0;
+}
+
+.menuItem {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: stretch;
+  width: 100%;
+  min-height: 40px;
   padding: 8px 12px;
+  gap: 4px;
   border: none;
-  background: transparent;
-  color: #ffffff;
-  font: inherit;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 400;
   text-align: left;
   cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.12s ease;
+}
 
-  &:hover {
-    background: rgba(255, 255, 255, 0.08);
-  }
+.menuItemDark {
+  background: transparent;
+  color: #ffffff;
+}
+
+.menuItemDark:hover,
+.menuItemDark[aria-selected="true"] {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.menuItemLight {
+  background: transparent;
+  color: #101010;
+}
+
+.menuItemLight:hover,
+.menuItemLight[aria-selected="true"] {
+  background: #d7d7d7;
+}
+
+.menuItemLabel {
+  flex: 1;
+  min-width: 0;
 }
