@@ -6,7 +6,11 @@
   z-index: 100;
   box-sizing: border-box;
   padding-top: 20px;
-  background: #222222;
+  pointer-events: none;
+}
+
+.root > * {
+  pointer-events: auto;
 }
 
 .shell {
@@ -21,6 +25,34 @@
   @media (min-width: 1440px) {
     padding-inline: 70px;
   }
+}
+
+.bar {
+  box-sizing: border-box;
+  width: 100%;
+  margin-inline: 0;
+  will-change: padding, border-radius, background-color;
+}
+
+.barFloating {
+  margin-inline: auto;
+  width: calc(100% - 16px);
+  max-width: 1324px;
+
+  @media (min-width: 768px) {
+    width: calc(100% - 32px);
+    max-width: 1324px;
+  }
+
+  @media (min-width: 1440px) {
+    width: calc(100% - 116px);
+    max-width: 1324px;
+  }
+}
+
+.barBlur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .inner {
@@ -40,15 +72,31 @@
 
   @media (min-width: 768px) {
     max-width: 688px;
+    margin-inline: auto;
   }
 
   @media (min-width: 1440px) {
     max-width: 1300px;
+    margin-inline: auto;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     column-gap: 40px;
     row-gap: 0;
+  }
+}
+
+.innerDocked {
+  margin-inline: 0;
+
+  @media (min-width: 768px) {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: none;
+    margin-inline: 0;
   }
 }
 
@@ -130,9 +178,25 @@
   }
 }
 
+.logoSlot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  height: 40px;
+}
+
 .logo {
   display: block;
   width: 111px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.logoCompact {
+  display: block;
+  width: 41px;
   height: 40px;
   flex-shrink: 0;
 }
