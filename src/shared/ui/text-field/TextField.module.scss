@@ -21,10 +21,10 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  min-height: 52px;
-  padding: 0 12px;
+  height: 52px;
+  padding: 16px 12px;
   gap: 12px;
   border-radius: 8px;
   background: var(--field-bg);
@@ -55,14 +55,34 @@
 .slot {
   display: flex;
   flex-shrink: 0;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   color: var(--field-value);
 }
 
+/* Как в макете: фрейм 20×20, контент по центру */
+.slotIcon {
+  box-sizing: border-box;
+  flex: none;
+  width: 20px;
+  height: 20px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0;
+
+  :global(svg) {
+    display: block;
+    flex-shrink: 0;
+  }
+}
+
 .input {
   flex: 1 1 auto;
+  align-self: flex-start;
   min-width: 0;
+  min-height: 0;
+  height: 20px;
   margin: 0;
   padding: 0;
   border: none;
@@ -73,6 +93,7 @@
   line-height: 20px;
   color: var(--field-value);
   outline: none;
+  box-sizing: border-box;
 }
 
 .input::placeholder {

@@ -1,5 +1,6 @@
 import { useId, type InputHTMLAttributes, type ReactNode } from "react";
 import cn from "classnames";
+import { TronGlyph, WalletGlyph } from "@/shared/ui/icons";
 import styles from "./TextField.module.scss";
 
 export type TextFieldVisualVariant =
@@ -33,6 +34,27 @@ const STATIC: Record<
   error: { value: "", placeholder: "Placeholder" },
 };
 
+function DefaultStartSlot() {
+  return (
+    <span className={cn(styles.slot, styles.slotIcon)}>
+      <WalletGlyph />
+    </span>
+  );
+}
+
+function DefaultEndSlot() {
+  return (
+    <>
+      <span className={cn(styles.slot, styles.slotIcon)}>
+        <WalletGlyph />
+      </span>
+      <span className={cn(styles.slot, styles.slotIcon)}>
+        <TronGlyph />
+      </span>
+    </>
+  );
+}
+
 export function TextField({
   label,
   error,
@@ -40,6 +62,7 @@ export function TextField({
   endSlot,
   className,
   visualVariant = "interactive",
+  placeholder = "Placeholder",
   ...inputProps
 }: TextFieldProps) {
   const fieldId = useId();
@@ -70,7 +93,13 @@ export function TextField({
         {label}
       </label>
       <div className={styles.control}>
-        {startSlot ? <span className={styles.slot}>{startSlot}</span> : null}
+        {startSlot !== undefined ? (
+          startSlot !== null ? (
+            <span className={styles.slot}>{startSlot}</span>
+          ) : null
+        ) : (
+          <DefaultStartSlot />
+        )}
         <input
           id={fieldId}
           className={styles.input}
@@ -82,10 +111,16 @@ export function TextField({
                 placeholder: staticProps.placeholder,
               }
             : {})}
-          {...(!isStatic ? inputProps : {})}
+          {...(!isStatic ? { ...inputProps, placeholder } : {})}
           aria-invalid={showError || undefined}
         />
-        {endSlot ? <span className={styles.slot}>{endSlot}</span> : null}
+        {endSlot !== undefined ? (
+          endSlot !== null ? (
+            <span className={styles.slot}>{endSlot}</span>
+          ) : null
+        ) : (
+          <DefaultEndSlot />
+        )}
       </div>
       {showError && errorMessage ? (
         <p className={styles.errorText} role="alert">

@@ -11,20 +11,8 @@ import {
   ChevronRightGlyph,
   CloseGlyph,
   ProfileGlyph,
-  TronGlyph,
-  WalletGlyph,
 } from "@/shared/ui/icons";
 import styles from "./page.module.scss";
-
-const fieldSlots = {
-  start: <WalletGlyph />,
-  end: (
-    <span className={styles.iconPair}>
-      <WalletGlyph />
-      <TronGlyph />
-    </span>
-  ),
-};
 
 export default function Home() {
   return (
@@ -185,58 +173,27 @@ export default function Home() {
       <div className={styles.fieldMatrix}>
         <div className={styles.fieldRow}>
           <span className={styles.rowLabel}>Default</span>
-          <TextField
-            label="Label"
-            visualVariant="default"
-            startSlot={fieldSlots.start}
-            endSlot={fieldSlots.end}
-          />
+          <TextField label="Label" visualVariant="default" />
         </div>
         <div className={styles.fieldRow}>
           <span className={styles.rowLabel}>Hover</span>
-          <TextField
-            label="Label"
-            visualVariant="hover"
-            startSlot={fieldSlots.start}
-            endSlot={fieldSlots.end}
-          />
+          <TextField label="Label" visualVariant="hover" />
         </div>
         <div className={styles.fieldRow}>
           <span className={styles.rowLabel}>Typing / active</span>
-          <TextField
-            label="Label"
-            visualVariant="typing"
-            startSlot={fieldSlots.start}
-            endSlot={fieldSlots.end}
-          />
+          <TextField label="Label" visualVariant="typing" />
         </div>
         <div className={styles.fieldRow}>
           <span className={styles.rowLabel}>Entered</span>
-          <TextField
-            label="Label"
-            visualVariant="entered"
-            startSlot={fieldSlots.start}
-            endSlot={fieldSlots.end}
-          />
+          <TextField label="Label" visualVariant="entered" />
         </div>
         <div className={styles.fieldRow}>
           <span className={styles.rowLabel}>Error</span>
-          <TextField
-            label="Label"
-            visualVariant="error"
-            startSlot={fieldSlots.start}
-            endSlot={fieldSlots.end}
-          />
+          <TextField label="Label" visualVariant="error" />
         </div>
         <div className={styles.fieldRow}>
           <span className={styles.rowLabel}>Live</span>
-          <TextField
-            label="Label"
-            visualVariant="interactive"
-            placeholder="Placeholder"
-            startSlot={fieldSlots.start}
-            endSlot={fieldSlots.end}
-          />
+          <TextField label="Label" visualVariant="interactive" />
         </div>
       </div>
 
