@@ -3,6 +3,14 @@
   display: inline-block;
 }
 
+.rootOpen {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 105px;
+}
+
 .trigger {
   box-sizing: border-box;
   display: inline-flex;
@@ -57,14 +65,14 @@
 
 .triggerDark {
   background: var(--lang-bg);
-  color: #ffffff;
+  color: var(--btn-on-dark);
 
   &:hover:not(:disabled) {
     background: var(--lang-bg-hover);
   }
 
   .chevron {
-    color: #ffffff;
+    color: var(--btn-on-dark);
   }
 }
 
@@ -80,14 +88,14 @@
 
 .triggerInvert {
   background: var(--lang-invert-bg);
-  color: #101010;
+  color: var(--btn-on-light);
 
   &:hover:not(:disabled) {
     background: #e8e8e8;
   }
 
   .chevron {
-    color: #101010;
+    color: var(--btn-on-light);
   }
 }
 
@@ -100,21 +108,20 @@
 }
 
 .menu {
-  position: absolute;
-  z-index: 10;
-  /* Без зазора к триггеру — иначе просвечивает фон страницы */
-  top: 100%;
-  left: 0;
+  position: static;
+  z-index: 1;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 2px;
   width: 105px;
   margin: 0;
   padding: 4px;
   list-style: none;
   border-radius: 12px;
   backdrop-filter: blur(10px);
+  /* Без щелей между скруглениями пунктов — подложка не «просвечивает» */
+  overflow: hidden;
 }
 
 .menuDark {
@@ -141,35 +148,40 @@
   padding: 8px 12px;
   gap: 4px;
   border: none;
-  border-radius: 8px;
+  border-radius: 0;
   font-family: var(--font-family);
   font-size: 16px;
   line-height: 130%;
   font-weight: 400;
   text-align: left;
   cursor: pointer;
-  backdrop-filter: blur(10px);
-  transition: background 0.12s ease;
+  transition:
+    background 0.12s ease,
+    border-radius 0.12s ease;
 }
 
 .menuItemDark {
   background: transparent;
-  color: #ffffff;
+  color: var(--btn-on-dark);
 }
 
 .menuItemDark:hover,
+.menuItemDark:active,
 .menuItemDark[aria-selected="true"] {
   background: rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-control);
 }
 
 .menuItemLight {
   background: transparent;
-  color: #101010;
+  color: var(--btn-on-light);
 }
 
 .menuItemLight:hover,
+.menuItemLight:active,
 .menuItemLight[aria-selected="true"] {
-  background: #d7d7d7;
+  background: var(--lang-invert-open);
+  border-radius: var(--radius-control);
 }
 
 .menuItemLabel {

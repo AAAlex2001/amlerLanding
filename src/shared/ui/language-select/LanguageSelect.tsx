@@ -74,7 +74,14 @@ export function LanguageSelect({
   const Flag = selected.value === "en" ? FlagUkGlyph : FlagRuGlyph;
 
   return (
-    <div ref={rootRef} className={cn(styles.root, className)}>
+    <div
+      ref={rootRef}
+      className={cn(
+        styles.root,
+        openState && !isStatic && styles.rootOpen,
+        className,
+      )}
+    >
       <button
         type="button"
         className={cn(

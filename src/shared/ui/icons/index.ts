@@ -6,4 +6,5 @@ export { ChevronDownGlyph } from "./ChevronDownGlyph";
 export { WalletGlyph } from "./WalletGlyph";
 export { FlagRuGlyph } from "./FlagRuGlyph";
 export { FlagUkGlyph } from "./FlagUkGlyph";
-export { TrxGlyph } from "./TrxGlyph";
+export * from "./providers";
+export * from "./crypto";

@@ -11,7 +11,7 @@ import {
   ChevronRightGlyph,
   CloseGlyph,
   ProfileGlyph,
-  TrxGlyph,
+  TronGlyph,
   WalletGlyph,
 } from "@/shared/ui/icons";
 import styles from "./page.module.scss";
@@ -21,7 +21,7 @@ const fieldSlots = {
   end: (
     <span className={styles.iconPair}>
       <WalletGlyph />
-      <TrxGlyph />
+      <TronGlyph />
     </span>
   ),
 };
@@ -131,13 +131,13 @@ export default function Home() {
 
       <h2 className={styles.sectionTitle}>Ссылки</h2>
       <p className={styles.subtitle}>
-        Состояния через CSS; посещённая — после клика по якорю.
+        Состояния через <code>:hover</code> и <code>:active</code>.
       </p>
       <div className={styles.linkColumns}>
         <div className={styles.linkColumn}>
           <div className={styles.linkColumnTitle}>Default</div>
           <div className={styles.linkRow}>
-            <TextLink href="#link-def" variant="default">
+            <TextLink href="/" variant="default">
               Link
             </TextLink>
           </div>
@@ -145,7 +145,7 @@ export default function Home() {
         <div className={styles.linkColumn}>
           <div className={styles.linkColumnTitle}>Header</div>
           <div className={styles.linkRow}>
-            <TextLink href="#link-head" variant="header">
+            <TextLink href="/" variant="header">
               Link
             </TextLink>
           </div>
@@ -153,7 +153,7 @@ export default function Home() {
         <div className={styles.linkColumn}>
           <div className={styles.linkColumnTitle}>Footer</div>
           <div className={styles.linkRow}>
-            <TextLink href="#link-foot" variant="footer">
+            <TextLink href="/" variant="footer">
               Link
             </TextLink>
           </div>

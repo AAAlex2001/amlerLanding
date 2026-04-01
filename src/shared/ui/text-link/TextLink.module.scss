@@ -10,23 +10,27 @@
   line-height: 130%;
   color: var(--link-accent);
 
+  &:visited {
+    color: var(--link-accent);
+  }
+
   &:hover {
     color: var(--link-accent-hover);
   }
 
   &:active {
     color: var(--link-accent-active);
-  }
-
-  &:visited {
-    color: var(--link-visited);
   }
 }
 
 .variant_header {
   font-size: 16px;
   line-height: 130%;
-  color: #ffffff;
+  color: var(--link-on-dark);
+
+  &:visited {
+    color: var(--link-on-dark);
+  }
 
   &:hover {
     color: var(--link-accent-hover);
@@ -34,10 +38,6 @@
 
   &:active {
     color: var(--link-accent-active);
-  }
-
-  &:visited {
-    color: var(--link-visited);
   }
 }
 
@@ -45,7 +45,11 @@
   font-size: 20px;
   line-height: 110%;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--link-on-dark);
+
+  &:visited {
+    color: var(--link-on-dark);
+  }
 
   &:hover {
     color: var(--link-accent-hover);
@@ -53,9 +57,5 @@
 
   &:active {
     color: var(--link-accent-active);
-  }
-
-  &:visited {
-    color: var(--link-visited);
   }
 }
