@@ -65,7 +65,7 @@ export function LanguageSelect({
   return (
     <div
       ref={rootRef}
-      className={cn(styles.root, open && styles.rootOpen, className)}
+      className={cn(styles.root, open && styles.open, className)}
     >
       <button
         type="button"

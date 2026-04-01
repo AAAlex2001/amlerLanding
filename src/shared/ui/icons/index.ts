@@ -3,6 +3,7 @@ export { BurgerGlyph } from "./BurgerGlyph";
 export { ChevronRightGlyph } from "./ChevronRightGlyph";
 export { CloseGlyph } from "./CloseGlyph";
 export { ChevronDownGlyph } from "./ChevronDownGlyph";
+export { TgGlyph } from "./TgGlyph";
 export { WalletGlyph } from "./WalletGlyph";
 export { FlagRuGlyph } from "./FlagRuGlyph";
 export { FlagUkGlyph } from "./FlagUkGlyph";
