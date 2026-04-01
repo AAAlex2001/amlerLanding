@@ -9,16 +9,12 @@ export type LanguageSelectVariant = "default" | "invert";
 
 export type LanguageOption = { value: string; label: string };
 
-export type LanguageSelectDemo = "default" | "hover" | "open";
-
 export type LanguageSelectProps = {
   variant?: LanguageSelectVariant;
   options?: LanguageOption[];
   value?: string;
   defaultValue?: string;
   onChange?: (value: string) => void;
-  /** Статичные состояния для сетки макета */
-  demo?: LanguageSelectDemo;
   className?: string;
 };
 
@@ -31,7 +27,6 @@ export function LanguageSelect({
   value: controlledValue,
   defaultValue,
   onChange,
-  demo,
   className,
 }: LanguageSelectProps) {
   const [open, setOpen] = useState(false);
@@ -42,9 +37,6 @@ export function LanguageSelect({
 
   const value = controlledValue ?? uncontrolled;
   const selected = options.find((o) => o.value === value) ?? options[0];
-
-  const isStatic = demo !== undefined;
-  const openState = isStatic ? demo === "open" : open;
 
   const setValue = useCallback(
     (v: string) => {
@@ -57,9 +49,6 @@ export function LanguageSelect({
   );
 
   useEffect(() => {
-    if (isStatic) {
-      return;
-    }
     const onDoc = (e: MouseEvent) => {
       if (!rootRef.current?.contains(e.target as Node)) {
         setOpen(false);
@@ -67,7 +56,7 @@ export function LanguageSelect({
     };
     document.addEventListener("mousedown", onDoc);
     return () => document.removeEventListener("mousedown", onDoc);
-  }, [isStatic]);
+  }, []);
 
   const isDark = variant === "default";
 
@@ -76,44 +65,30 @@ export function LanguageSelect({
   return (
     <div
       ref={rootRef}
-      className={cn(
-        styles.root,
-        openState && !isStatic && styles.rootOpen,
-        className,
-      )}
+      className={cn(styles.root, open && styles.rootOpen, className)}
     >
       <button
         type="button"
         className={cn(
           styles.trigger,
           isDark ? styles.triggerDark : styles.triggerInvert,
-          !isStatic && openState && isDark && styles.triggerDarkOpen,
-          !isStatic && openState && !isDark && styles.triggerInvertOpen,
-          isDark &&
-            isStatic &&
-            demo === "hover" &&
-            styles.triggerDarkStaticHover,
-          isDark && isStatic && demo === "open" && styles.triggerDarkStaticOpen,
-          !isDark &&
-            isStatic &&
-            demo === "open" &&
-            styles.triggerInvertStaticOpen,
+          open && isDark && styles.triggerDarkOpen,
+          open && !isDark && styles.triggerInvertOpen,
         )}
-        aria-expanded={openState}
+        aria-expanded={open}
         aria-haspopup="listbox"
-        disabled={isStatic}
-        onClick={() => !isStatic && setOpen((o) => !o)}
+        onClick={() => setOpen((o) => !o)}
       >
         <span className={styles.inner}>
           <Flag className={styles.flag} />
           <span className={styles.label}>{selected.label}</span>
         </span>
         <ChevronDownGlyph
-          className={cn(styles.chevron, openState && styles.chevronOpen)}
+          className={cn(styles.chevron, open && styles.chevronOpen)}
         />
       </button>
 
-      {openState && !isStatic ? (
+      {open ? (
         <ul
           className={cn(styles.menu, isDark ? styles.menuDark : styles.menuInvert)}
           role="listbox"

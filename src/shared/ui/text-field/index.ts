@@ -1,5 +1,1 @@
-export {
-  TextField,
-  type TextFieldProps,
-  type TextFieldVisualVariant,
-} from "./TextField";
+export { TextField, type TextFieldProps } from "./TextField";

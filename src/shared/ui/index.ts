@@ -11,15 +11,16 @@ export {
   type TabProps,
   type TabsOrientation,
 } from "./tabs";
-export {
-  TextField,
-  type TextFieldProps,
-  type TextFieldVisualVariant,
-} from "./text-field";
+export { TextField, type TextFieldProps } from "./text-field";
 export {
   LanguageSelect,
   type LanguageSelectProps,
   type LanguageSelectVariant,
-  type LanguageSelectDemo,
   type LanguageOption,
 } from "./language-select";
+export {
+  TypographyH1,
+  TypographyP,
+  type TypographyH1Props,
+  type TypographyPProps,
+} from "./typography";

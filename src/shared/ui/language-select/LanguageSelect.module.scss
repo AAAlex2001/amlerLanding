@@ -81,11 +81,6 @@
   background: var(--lang-bg-hover);
 }
 
-.triggerDarkStaticHover,
-.triggerDarkStaticOpen {
-  background: var(--lang-bg-hover);
-}
-
 .triggerInvert {
   background: var(--lang-invert-bg);
   color: var(--btn-on-light);
@@ -100,10 +95,6 @@
 }
 
 .triggerInvertOpen {
-  background: var(--lang-invert-open);
-}
-
-.triggerInvertStaticOpen {
   background: var(--lang-invert-open);
 }
 

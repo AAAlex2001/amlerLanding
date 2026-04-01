@@ -151,7 +151,8 @@ body {
 
 body {
   font-family: Inter;
-  background: #101010;
+  background: #222222;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
+  padding: 0 20px;
 }
