@@ -8,6 +8,7 @@ import { useMediaQuery } from "@/shared/hooks";
 import { Button } from "@/shared/ui/button";
 import { Chip, ChipGroup, TypographyH4, TypographyTextMedium } from "@/shared/ui";
 import { ChevronRightGlyph } from "@/shared/ui/icons";
+import { HowItWorksCardInteractionProvider } from "@/shared/ui/icons/how-it-works";
 import { Pagination } from "@/shared/ui/pagination";
 import styles from "./Slider.module.scss";
 import "swiper/css";
@@ -35,6 +36,8 @@ export type SliderProps = {
 };
 
 function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
+  const [hovered, setHovered] = useState(false);
+
   return (
     <div
       className={cn(
@@ -42,6 +45,8 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
         styles.slideMainEmbedded,
         slide.variant === "risk" && styles.slideMainRisk,
       )}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
     >
       {slide.eyebrow != null && slide.eyebrow !== "" && (
         <TypographyTextMedium className={styles.embeddedEyebrow}>
@@ -52,7 +57,9 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
         <div
           className={cn(styles.illustration, styles.illustrationEmbedded)}
         >
-          {slide.illustration}
+          <HowItWorksCardInteractionProvider value={hovered}>
+            {slide.illustration}
+          </HowItWorksCardInteractionProvider>
         </div>
       )}
       {slide.variant === "risk" ? (
@@ -162,12 +169,7 @@ export function Slider({ slides, className, layout = "default" }: SliderProps) {
             >
               {slides.map((slide, i) => (
                 <SwiperSlide key={i} className={styles.slide}>
-                  <div
-                    className={cn(
-                      styles.slideMain,
-                      styles.slideMainMarketing,
-                    )}
-                  >
+                  <div className={styles.slideMain}>
                     {slide.variant === "risk" ? null : (
                       <>
                         <div className={styles.illustration}>{slide.illustration}</div>

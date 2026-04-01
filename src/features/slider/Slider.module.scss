@@ -10,7 +10,7 @@
   margin-inline: 0;
   padding: 0;
   border-radius: 24px;
-  background: #333333;
+  background: linear-gradient(180deg, #333333 0%, #4b6e46 270.74%);
   overflow: hidden;
   min-width: 0;
   align-self: stretch;
@@ -239,18 +239,6 @@
   }
 }
 
-.slideMainMarketing {
-  box-sizing: border-box;
-  border-radius: 16px;
-  background: #333333;
-  transition: background 0.25s ease;
-}
-
-.slide:global(.swiper-slide-active) .slideMainMarketing,
-.slide:hover .slideMainMarketing {
-  background: linear-gradient(180deg, #333333 0%, #4b6e46 270.74%);
-}
-
 .slide {
   box-sizing: border-box;
   height: 100%;
@@ -278,6 +266,7 @@
 }
 
 .slideMainEmbedded {
+  position: relative;
   align-items: center;
   justify-content: space-between;
   gap: 0;
@@ -290,6 +279,28 @@
     height: 366px;
     padding: 24px;
   }
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(180deg, #333333 0%, #4b6e46 270.74%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  @media (hover: hover) {
+    &:hover::after {
+      opacity: 1;
+    }
+  }
+
+  & > * {
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .slideMainRisk {
@@ -297,6 +308,10 @@
   background: #933d3e;
   justify-content: space-between;
   gap: 88px;
+
+  &::after {
+    background: linear-gradient(180deg, #933d3e 0%, #7a2526 270.74%);
+  }
 }
 
 .illustration {
