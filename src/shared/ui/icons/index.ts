@@ -11,4 +11,6 @@ export { AmlerLogo } from "./AmlerLogo";
 export { AmlerLogoMark } from "./AmlerLogoMark";
 export * from "./providers";
 export * from "./crypto";
+export * from "./interface";
+export * from "./how-it-works";
 export * from "./slider";

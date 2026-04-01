@@ -1,10 +1,16 @@
 export {
   TypographyH1,
+  TypographyH2,
   TypographyH4,
+  TypographyText,
+  TypographyTextMedium,
   TypographyDisplayM,
   TypographyP,
   type TypographyH1Props,
+  type TypographyH2Props,
   type TypographyH4Props,
+  type TypographyTextProps,
+  type TypographyTextMediumProps,
   type TypographyDisplayMProps,
   type TypographyPProps,
 } from "./Typography";

@@ -19,15 +19,56 @@
   }
 }
 
-.lead {
+/* site/Heading/H2 — секции (макет 360 / 768 / 1440) */
+.heading2 {
   margin: 0;
-  align-self: stretch;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-align: start;
+
+  @media (min-width: 768px) {
+    font-size: 30px;
+    line-height: 120%;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 40px;
+    line-height: 120%;
+  }
+}
+
+/* Основной текст 16/130, белый (чипы, подписи) */
+.text {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 130%;
+  color: #ffffff;
+  text-align: start;
+}
+
+/* Вторичный текст 16/130, серый (лиды под заголовками) */
+.textMuted {
+  margin: 0;
   font-family: var(--font-family);
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
   line-height: 130%;
   color: #a6a6a6;
+  text-align: start;
+}
+
+.lead {
+  composes: textMuted;
+  align-self: stretch;
 }
 
 .heading4 {
@@ -40,6 +81,41 @@
   letter-spacing: -0.02em;
   color: #ffffff;
   text-align: center;
+}
+
+/* H4 слева — заголовки в карточках (напр. «Риски…»), 16 → 20 → 24 */
+.heading4Left {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-align: start;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: 120%;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 24px;
+    line-height: 120%;
+  }
+}
+
+/* Акцентный текст 16/130, medium — номера шагов и подписи в AML-карточках */
+.textMedium {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  color: #ffffff;
+  text-align: start;
 }
 
 .displayM {

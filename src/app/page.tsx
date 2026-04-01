@@ -6,6 +6,7 @@ import {
   SliderVaultIllustration,
 } from "@/shared/ui/icons";
 import { Hero } from "@/widgets/hero";
+import { HowItWorksSlider } from "@/widgets/how-it-works-slider";
 import { Partners } from "@/widgets/partners";
 import styles from "./page.module.scss";
 
@@ -49,6 +50,7 @@ export default function Home() {
         <Slider slides={sliderSlides} />
       </div>
       <Partners />
+      <HowItWorksSlider />
     </main>
   );
 }
