@@ -59,6 +59,9 @@ export function HowItWorksStep2Illustration({
           <stop stopColor="white" stopOpacity={0.3} />
           <stop offset={1} stopColor="white" stopOpacity={0.05} />
         </linearGradient>
+        <filter id={`${uid}_blur`} x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation={4.7} />
+        </filter>
         <clipPath id={`${uid}_c0`}>
           <rect width={168} height={168} fill="white" />
         </clipPath>
@@ -136,6 +139,15 @@ export function HowItWorksStep2Illustration({
             rx={3.75708}
             transform="rotate(-45 112.263 114.06)"
             fill="#9A9761"
+          />
+          {/* Lens glow layer */}
+          <circle
+            cx={84.085}
+            cy={82.085}
+            r={44.6153}
+            fill={`url(#${uid}_g0)`}
+            fillOpacity={0.5}
+            filter={`url(#${uid}_blur)`}
           />
           {/* Lens circle */}
           <circle
