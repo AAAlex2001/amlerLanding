@@ -1,6 +1,6 @@
 "use client";
 
-import { useId } from "react";
+import { useId, useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useHowItWorksCardInteraction } from "./HowItWorksCardInteractionContext";
 
@@ -18,6 +18,10 @@ const STEPS = [0, 45, 90, 135, 180, 225, 270, 315, 360];
 const orbitX = STEPS.map(circleX);
 const orbitY = STEPS.map(circleY);
 
+const enterEase: [number, number, number, number] = [0.33, 1, 0.68, 1];
+const ENTER_DURATION = 0.42;
+const ORBIT_DURATION = 2.2;
+
 export function HowItWorksStep2Illustration({
   className,
 }: {
@@ -25,6 +29,19 @@ export function HowItWorksStep2Illustration({
 }) {
   const uid = useId().replace(/:/g, "");
   const interactive = useHowItWorksCardInteraction();
+  const [orbiting, setOrbiting] = useState(false);
+  const interactiveRef = useRef(interactive);
+  const orbitingRef = useRef(orbiting);
+  interactiveRef.current = interactive;
+  orbitingRef.current = orbiting;
+
+  useEffect(() => {
+    if (!interactive) {
+      setOrbiting(false);
+      return;
+    }
+    setOrbiting(false);
+  }, [interactive]);
 
   return (
     <svg
@@ -67,7 +84,6 @@ export function HowItWorksStep2Illustration({
         </clipPath>
       </defs>
       <g clipPath={`url(#${uid}_c0)`}>
-        {/* Corner brackets — static */}
         <path
           d="M49.7143 4H18.6789C10.572 4 4 10.572 4 18.6789V49.7143"
           stroke="white"
@@ -93,7 +109,6 @@ export function HowItWorksStep2Illustration({
           strokeWidth={6.66667}
         />
 
-        {/* Wallet — static */}
         <g clipPath={`url(#${uid}_c2)`}>
           <rect
             x={66.5}
@@ -110,24 +125,33 @@ export function HowItWorksStep2Illustration({
           />
         </g>
 
-        {/* Magnifying glass — orbiting group */}
         <motion.g
+          initial={false}
           animate={
-            interactive
-              ? { x: orbitX, y: orbitY }
-              : { x: 0, y: 0 }
+            !interactive
+              ? { x: 0, y: 0 }
+              : orbiting
+                ? { x: orbitX, y: orbitY }
+                : { x: orbitX[0], y: orbitY[0] }
           }
           transition={
-            interactive
-              ? {
-                  duration: 2.4,
-                  ease: "linear",
-                  repeat: Infinity,
-                }
-              : { duration: 0.4, ease: "easeOut" }
+            !interactive
+              ? { duration: 0.38, ease: enterEase }
+              : orbiting
+                ? {
+                    duration: ORBIT_DURATION,
+                    ease: "linear",
+                    repeat: Infinity,
+                    repeatType: "loop",
+                  }
+                : { duration: ENTER_DURATION, ease: enterEase }
           }
+          onAnimationComplete={() => {
+            if (interactiveRef.current && !orbitingRef.current) {
+              setOrbiting(true);
+            }
+          }}
         >
-          {/* Handle */}
           <rect
             x={112.263}
             y={114.06}
@@ -137,7 +161,6 @@ export function HowItWorksStep2Illustration({
             transform="rotate(-45 112.263 114.06)"
             fill="#9A9761"
           />
-          {/* Lens circle */}
           <circle
             cx={84.085}
             cy={82.085}
