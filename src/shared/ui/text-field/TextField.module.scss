@@ -1,0 +1,127 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.label {
+  width: 100%;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: var(--field-label);
+}
+
+.control {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  min-height: 52px;
+  padding: 0 12px;
+  gap: 12px;
+  border-radius: 8px;
+  background: var(--field-bg);
+  border: 1px solid transparent;
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.control:hover {
+  background: var(--field-bg-active);
+}
+
+.wrapper:focus-within .control {
+  background: var(--field-bg-active);
+}
+
+.hasError .control {
+  background: var(--field-bg);
+  border-color: var(--field-error);
+}
+
+.hasError .control:hover {
+  background: var(--field-bg);
+  border-color: var(--field-error);
+}
+
+.slot {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--field-value);
+}
+
+.input {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: var(--field-value);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--field-placeholder);
+}
+
+.input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.errorText {
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: var(--field-error);
+}
+
+/* Статичные состояния для UI-kit */
+.static {
+  pointer-events: none;
+}
+
+.static .control:hover {
+  background: inherit;
+}
+
+.visualDefault .control {
+  background: var(--field-bg);
+}
+
+.visualHover .control {
+  background: var(--field-bg-active);
+}
+
+.visualTyping .control,
+.visualEntered .control {
+  background: var(--field-bg-active);
+}
+
+.visualError .control {
+  background: var(--field-bg);
+  border-color: var(--field-error);
+}
+
+.visualError .control:hover {
+  background: var(--field-bg);
+}

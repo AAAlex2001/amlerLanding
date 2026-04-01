@@ -6,7 +6,7 @@
   gap: 8px;
   margin: 0;
   border: none;
-  font-family: var(--font-body);
+  font-family: var(--font-family);
   font-size: 16px;
   line-height: 130%;
   font-weight: 400;
@@ -104,6 +104,23 @@
 
 .disabled,
 .root:disabled {
-  opacity: 0.45;
   cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* CTA disabled: как в макете — приглушённый оливковый, не общий opacity на всём */
+.variant_cta:disabled,
+.variant_cta.disabled {
+  opacity: 1;
+  background: var(--btn-cta-disabled-bg);
+  color: var(--btn-cta-disabled-fg);
+}
+
+.variant_secondary:disabled,
+.variant_secondary.disabled,
+.variant_burger:disabled,
+.variant_burger.disabled,
+.variant_icon:disabled,
+.variant_icon.disabled {
+  opacity: 0.45;
 }

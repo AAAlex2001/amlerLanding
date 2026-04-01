@@ -1,0 +1,122 @@
+.root {
+  position: relative;
+  display: inline-block;
+}
+
+.trigger {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  gap: 4px;
+  min-width: 105px;
+  height: 40px;
+  margin: 0;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 130%;
+  font-weight: 400;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.15s ease;
+}
+
+.trigger:disabled {
+  cursor: default;
+}
+
+.inner {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.flag {
+  flex-shrink: 0;
+  border-radius: 2.5px;
+}
+
+.label {
+  min-width: 33px;
+  text-align: left;
+}
+
+.chevron {
+  flex-shrink: 0;
+  transition: transform 0.15s ease;
+}
+
+.chevronOpen {
+  transform: scaleY(-1);
+}
+
+.triggerDark {
+  background: var(--lang-bg);
+  color: #ffffff;
+
+  &:hover:not(:disabled) {
+    background: var(--lang-bg-hover);
+  }
+
+  .chevron {
+    color: #ffffff;
+  }
+}
+
+.triggerDarkStaticHover,
+.triggerDarkStaticOpen {
+  background: var(--lang-bg-hover);
+}
+
+.triggerInvert {
+  background: var(--lang-invert-bg);
+  color: #101010;
+
+  &:hover:not(:disabled) {
+    background: #e8e8e8;
+  }
+
+  .chevron {
+    color: #101010;
+  }
+}
+
+.triggerInvertStaticOpen {
+  background: var(--lang-invert-open);
+}
+
+.menu {
+  position: absolute;
+  z-index: 10;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 100%;
+  margin: 0;
+  padding: 4px 0;
+  list-style: none;
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+}
+
+.menuItemBtn {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}

@@ -1,0 +1,61 @@
+.root {
+  font-family: var(--font-family);
+  font-weight: 400;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.variant_default {
+  font-size: 16px;
+  line-height: 130%;
+  color: var(--link-accent);
+
+  &:hover {
+    color: var(--link-accent-hover);
+  }
+
+  &:active {
+    color: var(--link-accent-active);
+  }
+
+  &:visited {
+    color: var(--link-visited);
+  }
+}
+
+.variant_header {
+  font-size: 16px;
+  line-height: 130%;
+  color: #ffffff;
+
+  &:hover {
+    color: var(--link-accent-hover);
+  }
+
+  &:active {
+    color: var(--link-accent-active);
+  }
+
+  &:visited {
+    color: var(--link-visited);
+  }
+}
+
+.variant_footer {
+  font-size: 20px;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+
+  &:hover {
+    color: var(--link-accent-hover);
+  }
+
+  &:active {
+    color: var(--link-accent-active);
+  }
+
+  &:visited {
+    color: var(--link-visited);
+  }
+}
