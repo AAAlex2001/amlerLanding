@@ -6,6 +6,7 @@ import {
   SliderVaultIllustration,
 } from "@/shared/ui/icons";
 import { Hero } from "@/widgets/hero";
+import { Partners } from "@/widgets/partners";
 import styles from "./page.module.scss";
 
 const heroCopy = {
@@ -45,6 +46,7 @@ export default function Home() {
     <main className={styles.main}>
       <Hero {...heroCopy} />
       <Slider slides={sliderSlides} />
+      <Partners />
     </main>
   );
 }
