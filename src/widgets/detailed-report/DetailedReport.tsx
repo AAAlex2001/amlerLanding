@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import cn from "classnames";
-import { Tabs, Tab, TypographyH4, TypographyP } from "@/shared/ui";
+import { Tabs, Tab, TypographyH2, TypographyH4, TypographyP } from "@/shared/ui";
 import { ProgressBar, type ProgressBarLevel } from "@/shared/ui/progress-bar";
+import { useMediaQuery } from "@/shared/hooks";
 import styles from "./DetailedReport.module.scss";
 
 type RiskPreset = {
@@ -31,12 +32,12 @@ const ease: [number, number, number, number] = [0.45, 0, 0.55, 1];
 
 const DIGITS = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
 
-function DigitRoller({ digit }: { digit: number }) {
+function DigitRoller({ digit, height }: { digit: number; height: number }) {
   return (
     <div className={styles.digitSlot}>
       <motion.div
         className={styles.digitStrip}
-        animate={{ y: -digit * 72 }}
+        animate={{ y: -digit * height }}
         transition={{ duration: 0.6, ease }}
       >
         {DIGITS.map((d, i) => (
@@ -49,12 +50,12 @@ function DigitRoller({ digit }: { digit: number }) {
   );
 }
 
-function RiskLevelRoller({ index }: { index: number }) {
+function RiskLevelRoller({ index, height }: { index: number; height: number }) {
   return (
     <div className={styles.riskLevelSlot}>
       <motion.div
         className={styles.riskLevelStrip}
-        animate={{ y: -index * 16 }}
+        animate={{ y: -index * height }}
         transition={{ duration: 0.4, ease }}
       >
         {RISK_LABELS.map((label, i) => (
@@ -74,8 +75,7 @@ export type DetailedReportTab = {
 
 export type DetailedReportProps = {
   className?: string;
-  title?: string;
-  description?: string;
+  heading?: string;
   tabs?: DetailedReportTab[];
 };
 
@@ -95,6 +95,12 @@ type PresetContent = {
 };
 
 const PRESET_CONTENT: Record<number, PresetContent> = {
+  0: {
+    title: "Риск-скор",
+    description:
+      "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
+    imageSrc: "",
+  },
   1: {
     title: "Ai-оценка и портрет владельца",
     description:
@@ -129,97 +135,102 @@ const PRESET_CONTENT: Record<number, PresetContent> = {
 
 export function DetailedReport({
   className,
-  title = "Риск-скор",
-  description = "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
+  heading = "Подробный отчет\nо проверке",
   tabs = defaultTabs,
 }: DetailedReportProps) {
   const [activeTab, setActiveTab] = useState(0);
   const activePresetIndex = tabs[activeTab]?.presetIndex ?? 0;
   const showRiskScore = activePresetIndex === 0;
+  const isDesktop = useMediaQuery("(min-width: 1440px)");
+  const isTablet = useMediaQuery("(min-width: 768px)");
+
+  const digitH = isDesktop ? 72 : isTablet ? 60 : 54;
+  const labelH = isDesktop ? 16 : isTablet ? 13 : 12;
 
   const [cycleIndex, setCycleIndex] = useState(0);
 
-  const advanceCycle = useCallback(() => {
-    setCycleIndex((prev) => (prev + 1) % CYCLE.length);
-  }, []);
-
   useEffect(() => {
     if (!showRiskScore) return;
-    const id = setInterval(advanceCycle, CYCLE_DELAY);
+    const id = setInterval(() => {
+      setCycleIndex((prev) => (prev + 1) % CYCLE.length);
+    }, CYCLE_DELAY);
     return () => clearInterval(id);
-  }, [advanceCycle, showRiskScore]);
+  }, [showRiskScore]);
 
   const preset = PRESETS[CYCLE[cycleIndex]];
   const tens = Math.floor(preset.value / 10) % 10;
   const ones = preset.value % 10;
 
   const presetContent = PRESET_CONTENT[activePresetIndex];
-  const headerAlign: "center" | "start" = "start";
 
   return (
-    <div className={cn(styles.root, className)}>
-      <div className={styles.tabBar}>
-        <Tabs orientation="horizontal">
-          {tabs.map((tab, i) => (
-            <Tab
-              key={i}
-              active={i === activeTab}
-              onClick={() => setActiveTab(i)}
-            >
-              {tab.label}
-            </Tab>
-          ))}
-        </Tabs>
-      </div>
+    <section className={cn(styles.root, className)}>
+      <TypographyH2>{heading}</TypographyH2>
 
-      <div className={styles.card}>
-        <div className={styles.cardHeader}>
-          <TypographyH4 align={headerAlign}>{showRiskScore ? title : presetContent?.title}</TypographyH4>
-          <TypographyP className={styles.description}>
-            {showRiskScore ? description : presetContent?.description}
-          </TypographyP>
+      <div className={styles.content}>
+        <div className={styles.tabBar}>
+          <Tabs orientation={isDesktop ? "vertical" : "horizontal"}>
+            {tabs.map((tab, i) => (
+              <Tab
+                key={i}
+                active={i === activeTab}
+                onClick={() => setActiveTab(i)}
+              >
+                {tab.label}
+              </Tab>
+            ))}
+          </Tabs>
         </div>
 
-        {showRiskScore ? (
-          <div
-            className={styles.levelScreen}
-            style={{
-              boxShadow: `inset 0px 4px 116.8px ${preset.glow}`,
-            }}
-          >
-            <div className={styles.levelInner}>
-              <div className={styles.numberRow}>
-                <div className={styles.rollingNumber}>
-                  <DigitRoller digit={tens} />
-                  <DigitRoller digit={ones} />
-                  <span className={styles.percentSign}>%</span>
-                </div>
-                <div className={styles.riskLabel}>
-                  <RiskLevelRoller index={preset.labelIndex} />
-                  <span className={styles.riskStatic}>уровень риска</span>
-                </div>
-              </div>
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <TypographyH4 align="start">{presetContent?.title}</TypographyH4>
+            <TypographyP className={styles.description}>
+              {presetContent?.description}
+            </TypographyP>
+          </div>
 
-              <div className={styles.progressBarWrap}>
-                <ProgressBar
-                  filled={preset.filled}
-                  total={18}
-                  level={preset.level}
-                />
+          {showRiskScore ? (
+            <div
+              className={styles.levelScreen}
+              style={{
+                boxShadow: `inset 0px 4px 116.8px ${preset.glow}`,
+              }}
+            >
+              <div className={styles.levelInner}>
+                <div className={styles.numberRow}>
+                  <div className={styles.rollingNumber}>
+                    <DigitRoller digit={tens} height={digitH} />
+                    <DigitRoller digit={ones} height={digitH} />
+                    <span className={styles.percentSign}>%</span>
+                  </div>
+                  <div className={styles.riskLabel}>
+                    <RiskLevelRoller index={preset.labelIndex} height={labelH} />
+                    <span className={styles.riskStatic}>уровень риска</span>
+                  </div>
+                </div>
+
+                <div className={styles.progressBarWrap}>
+                  <ProgressBar
+                    filled={preset.filled}
+                    total={18}
+                    level={preset.level}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        ) : (
-          <div className={styles.svgScreen}>
-            <img
-              src={presetContent?.imageSrc}
-              alt={typeof presetContent?.title === "string" ? presetContent.title : "Detailed report"}
-              className={styles.svgImg}
-              loading="lazy"
-            />
-          </div>
-        )}
+          ) : (
+            <div className={styles.svgScreen}>
+              <img
+                src={presetContent?.imageSrc}
+                alt={typeof presetContent?.title === "string" ? presetContent.title : "Detailed report"}
+                className={styles.svgImg}
+                loading="lazy"
+              />
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

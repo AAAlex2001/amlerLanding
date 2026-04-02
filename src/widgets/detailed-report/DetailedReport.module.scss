@@ -1,4 +1,15 @@
+/* Mobile first: 360px */
 .root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0;
+  gap: 40px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -25,10 +36,10 @@
   padding: 20px;
   gap: 20px;
   width: 100%;
+  min-height: 470px;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 24px;
   box-sizing: border-box;
-  min-height: 470px;
 }
 
 .cardHeader {
@@ -39,19 +50,8 @@
   width: 100%;
 }
 
-.cardHeaderCentered {
-  align-items: flex-start;
-  text-align: start;
-}
-
 .description {
   color: #a6a6a6;
-  text-align: start;
-}
-
-.descriptionCentered {
-  text-align: start;
-  width: 100%;
 }
 
 .levelScreen {
@@ -59,10 +59,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 32px;
+  padding: 24px;
+  gap: 12px;
   width: 100%;
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 16px;
+  border-radius: 12px;
   box-sizing: border-box;
   flex: 1 1 auto;
   transition: box-shadow 0.6s ease;
@@ -73,7 +74,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   flex: 1 1 auto;
   width: 100%;
 }
@@ -83,7 +84,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex: 1 1 auto;
 }
 
@@ -96,8 +97,8 @@
 }
 
 .digitSlot {
-  width: 40px;
-  height: 72px;
+  width: 30px;
+  height: 54px;
   overflow: hidden;
 }
 
@@ -109,23 +110,23 @@
 .digit {
   display: block;
   width: 100%;
-  height: 72px;
+  height: 54px;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 64px;
-  line-height: 72px;
+  font-size: 48px;
+  line-height: 54px;
   color: #ffffff;
   text-align: center;
 }
 
 .percentSign {
   display: block;
-  width: 50px;
-  height: 72px;
+  width: 38px;
+  height: 54px;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 64px;
-  line-height: 72px;
+  font-size: 48px;
+  line-height: 54px;
   color: #ffffff;
   text-align: center;
 }
@@ -135,12 +136,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 3px;
+  gap: 2px;
 }
 
 .riskLevelSlot {
-  width: 52px;
-  height: 16px;
+  width: 40px;
+  height: 12px;
   overflow: hidden;
 }
 
@@ -152,20 +153,20 @@
 .riskLevelItem {
   display: block;
   width: 100%;
-  height: 16px;
+  height: 12px;
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
-  text-align: center;
+  font-size: 9px;
+  line-height: 12px;
+  text-align: right;
   color: rgba(255, 255, 255, 0.5);
 }
 
 .riskStatic {
   font-family: var(--font-family);
   font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
+  font-size: 9px;
+  line-height: 12px;
   color: rgba(255, 255, 255, 0.5);
 }
 
@@ -191,4 +192,172 @@
   height: auto;
   display: block;
   object-fit: contain;
+}
+
+/* Tablet 768+ */
+@media (min-width: 768px) {
+  .root {
+    padding: 0;
+    gap: 44px;
+    max-width: 688px;
+    margin-inline: auto;
+  }
+
+  .card {
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
+    gap: 20px;
+    min-height: auto;
+    height: 332px;
+  }
+
+  .cardHeader {
+    flex: 1 1 0;
+    align-self: stretch;
+    justify-content: space-between;
+    gap: 71px;
+  }
+
+  .levelScreen {
+    width: auto;
+    flex: 0 0 auto;
+    align-self: stretch;
+    aspect-ratio: 1;
+    padding: 26px;
+    gap: 13px;
+    border-radius: 13px;
+  }
+
+  .digitSlot {
+    width: 33px;
+    height: 60px;
+  }
+
+  .digit {
+    height: 60px;
+    font-size: 53px;
+    line-height: 60px;
+  }
+
+  .percentSign {
+    width: 41px;
+    height: 60px;
+    font-size: 53px;
+    line-height: 60px;
+  }
+
+  .riskLevelSlot {
+    width: 44px;
+    height: 13px;
+  }
+
+  .riskLevelItem {
+    height: 13px;
+    font-size: 10px;
+    line-height: 13px;
+  }
+
+  .riskStatic {
+    font-size: 10px;
+    line-height: 13px;
+  }
+
+  .riskLabel {
+    gap: 2px;
+  }
+
+  .numberRow {
+    gap: 7px;
+  }
+
+  .svgScreen {
+    width: auto;
+    flex: 0 0 auto;
+    align-self: stretch;
+    aspect-ratio: 1;
+  }
+}
+
+/* Desktop 1440+ */
+@media (min-width: 1440px) {
+  .root {
+    padding: 0;
+    gap: 48px;
+    max-width: 1300px;
+    margin-inline: auto;
+  }
+
+  .content {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .tabBar {
+    flex: 1 1 0;
+    overflow-x: visible;
+  }
+
+  .card {
+    flex: 0 0 860px;
+    height: 423px;
+    padding: 24px;
+    gap: 20px;
+  }
+
+  .cardHeader {
+    gap: 71px;
+  }
+
+  .levelScreen {
+    padding: 32px;
+    gap: 16px;
+    border-radius: 16px;
+  }
+
+  .levelInner {
+    gap: 10px;
+  }
+
+  .digitSlot {
+    width: 40px;
+    height: 72px;
+  }
+
+  .digit {
+    height: 72px;
+    font-size: 64px;
+    line-height: 72px;
+  }
+
+  .percentSign {
+    width: 50px;
+    height: 72px;
+    font-size: 64px;
+    line-height: 72px;
+  }
+
+  .riskLevelSlot {
+    width: 52px;
+    height: 16px;
+  }
+
+  .riskLevelItem {
+    height: 16px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .riskStatic {
+    font-size: 12px;
+    line-height: 16px;
+  }
+
+  .riskLabel {
+    gap: 3px;
+  }
+
+  .numberRow {
+    gap: 8px;
+  }
 }

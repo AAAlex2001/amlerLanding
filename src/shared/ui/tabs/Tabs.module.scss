@@ -5,8 +5,9 @@
 
 .orient_vertical {
   flex-direction: column;
-  gap: 29px;
+  gap: 0;
   align-items: flex-start;
+  border-left: 1px solid var(--tab-border-muted);
 }
 
 .orient_horizontal {
@@ -45,14 +46,16 @@
 }
 
 .tab_vertical.tab_active {
+  margin-left: -1px;
   border-left-width: 4px;
   border-left-color: var(--tab-accent-vertical);
   color: #ffffff;
 }
 
 .tab_vertical.tab_inactive {
+  margin-left: -1px;
   border-left-width: 1px;
-  border-left-color: var(--tab-border-muted);
+  border-left-color: transparent;
   color: var(--tab-muted);
 }
 
