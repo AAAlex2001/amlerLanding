@@ -27,6 +27,8 @@ jobs:
         run: npm ci
 
       - name: Build (static export)
+        env:
+          NEXT_BASE_PATH: /amlerLanding
         run: npm run build
 
       - name: Deploy to gh-pages
