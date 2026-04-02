@@ -78,10 +78,10 @@ export type DetailedReportProps = {
 
 const defaultTabs: DetailedReportTab[] = [
   { label: "Риск-скор", presetIndex: 0 },
-  { label: "AI-оценка", presetIndex: 1 },
-  { label: "Оценка риска", presetIndex: 2 },
-  { label: "Баланс", presetIndex: 3 },
-  { label: "История", presetIndex: 4 },
+  { label: "Ai-оценка и портрет владельца", presetIndex: 1 },
+  { label: "Оценка риска от провайдера", presetIndex: 2 },
+  { label: "Баланс кошелька", presetIndex: 3 },
+  { label: "История транзакций", presetIndex: 4 },
   { label: "Телеграм-бот", presetIndex: 5 },
 ];
 
