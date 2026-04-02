@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Header } from "@/widgets/header";
 import { Footer } from "@/widgets/footer";
 import "./globals.css";
@@ -6,6 +6,15 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Amler — лендинг",
   description: "Лендинг",
+};
+
+export const viewport: Viewport = {
+  initialScale: 1,
+  width: "device-width",
+  viewportFit: "cover",
+  userScalable: false,
+  maximumScale: 1,
+  minimumScale: 1,
 };
 
 export default function RootLayout({
