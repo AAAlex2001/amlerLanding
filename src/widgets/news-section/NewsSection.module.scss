@@ -1,0 +1,176 @@
+.root {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding: 40px 20px 80px;
+  background: #222222;
+}
+
+.inner {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 1300px;
+  margin-inline: auto;
+  gap: 40px;
+}
+
+.headRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 20px;
+  width: 100%;
+}
+
+.headText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.allLink {
+  line-height: 130%;
+}
+
+.swipe {
+  flex: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 3.2px;
+}
+
+.swiper {
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.slide {
+  box-sizing: border-box;
+  width: 300px;
+  height: auto;
+}
+
+.article {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  gap: 20px;
+}
+
+.cover {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 187px;
+  padding: 12px;
+  gap: 10px;
+  border-radius: 12px;
+  background-color: #333333;
+  background-size: cover;
+  background-position: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 0 12px;
+  gap: 12px;
+  box-sizing: border-box;
+}
+
+.metaRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.metaItem {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+}
+
+.excerpt {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.readLink {
+  margin-top: 0;
+}
+
+@media (min-width: 768px) {
+  .root {
+    padding: 50px 40px 100px;
+  }
+
+  .inner {
+    gap: 44px;
+  }
+
+  .slide {
+    width: 334px;
+  }
+
+  .article {
+    gap: 24px;
+  }
+
+  .cover {
+    min-height: 208px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .root {
+    padding: 60px 70px 120px;
+  }
+
+  .inner {
+    gap: 48px;
+  }
+
+  .headRow {
+    align-items: center;
+  }
+
+  .swipe {
+    display: none;
+  }
+
+  .slide {
+    width: 310px;
+  }
+
+  .cover {
+    min-height: 193px;
+  }
+}

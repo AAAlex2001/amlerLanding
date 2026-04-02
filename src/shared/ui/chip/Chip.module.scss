@@ -8,6 +8,24 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
+.accent {
+  padding: 0 8px;
+  min-height: 24px;
+  border-radius: 8px;
+  background: #9a9761;
+}
+
+.accentLabel {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
 .group {
   box-sizing: border-box;
   display: flex;

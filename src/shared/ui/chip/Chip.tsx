@@ -3,15 +3,28 @@ import cn from "classnames";
 import { TypographyText } from "@/shared/ui/typography";
 import styles from "./Chip.module.scss";
 
+export type ChipVariant = "default" | "accent";
+
 export type ChipProps = {
   children: ReactNode;
   className?: string;
+  variant?: ChipVariant;
 };
 
-export function Chip({ children, className }: ChipProps) {
+export function Chip({ children, className, variant = "default" }: ChipProps) {
   return (
-    <span className={cn(styles.root, className)}>
-      <TypographyText>{children}</TypographyText>
+    <span
+      className={cn(
+        styles.root,
+        variant === "accent" && styles.accent,
+        className,
+      )}
+    >
+      {variant === "accent" ? (
+        <span className={styles.accentLabel}>{children}</span>
+      ) : (
+        <TypographyText>{children}</TypographyText>
+      )}
     </span>
   );
 }

@@ -156,3 +156,41 @@
     line-height: 110%;
   }
 }
+
+.heading5 {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-align: start;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.caption {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.captionMuted {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #a6a6a6;
+}

@@ -23,21 +23,31 @@ export {
   TypographyH2,
   TypographyH3,
   TypographyH4,
+  TypographyH5,
   TypographyText,
   TypographyTextMedium,
   TypographyDisplayM,
   TypographyP,
+  TypographyCaption,
   type TypographyH1Props,
   type TypographyH2Props,
   type TypographyH3Props,
   type TypographyH4Props,
+  type TypographyH5Props,
   type TypographyTextProps,
   type TypographyTextMediumProps,
   type TypographyDisplayMProps,
   type TypographyPProps,
+  type TypographyCaptionProps,
 } from "./typography";
 export { Pagination, type PaginationProps } from "./pagination";
-export { Chip, ChipGroup, type ChipProps, type ChipGroupProps } from "./chip";
+export {
+  Chip,
+  ChipGroup,
+  type ChipProps,
+  type ChipGroupProps,
+  type ChipVariant,
+} from "./chip";
 export {
   ProgressBar,
   type ProgressBarProps,

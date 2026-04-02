@@ -17,7 +17,6 @@ export type TypographyPProps = WithClass &
   Omit<HTMLAttributes<HTMLParagraphElement>, "className">;
 
 export type TypographyH4Props = WithClass & {
-  /** center — маркетинговый слайдер; start — карточки AML и т.п. */
   align?: "center" | "start";
 } & Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
 
@@ -29,6 +28,14 @@ export type TypographyTextProps = WithClass &
 
 export type TypographyDisplayMProps = WithClass &
   Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
+
+export type TypographyH5Props = WithClass &
+  Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
+
+export type TypographyCaptionProps = WithClass &
+  Omit<HTMLAttributes<HTMLSpanElement>, "className"> & {
+    muted?: boolean;
+  };
 
 export function TypographyH1({ children, className, ...rest }: TypographyH1Props) {
   return (
@@ -110,5 +117,29 @@ export function TypographyDisplayM({
     <h2 className={cn(styles.displayM, className)} {...rest}>
       {children}
     </h2>
+  );
+}
+
+export function TypographyH5({ children, className, ...rest }: TypographyH5Props) {
+  return (
+    <h5 className={cn(styles.heading5, className)} {...rest}>
+      {children}
+    </h5>
+  );
+}
+
+export function TypographyCaption({
+  children,
+  className,
+  muted = false,
+  ...rest
+}: TypographyCaptionProps) {
+  return (
+    <span
+      className={cn(muted ? styles.captionMuted : styles.caption, className)}
+      {...rest}
+    >
+      {children}
+    </span>
   );
 }

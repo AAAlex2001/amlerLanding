@@ -4,6 +4,7 @@ import { DetailedReport } from "@/widgets/detailed-report";
 import { FreeChecks } from "@/widgets/free-checks";
 import { Partners } from "@/widgets/partners";
 import { IntegrationWidget } from "@/widgets/integration-widget";
+import { NewsSection } from "@/widgets/news-section";
 import { TgCheck } from "@/widgets/tg-check";
 import styles from "./page.module.scss";
 
@@ -23,6 +24,7 @@ export default function Home() {
       <div className={styles.integrationGroup}>
         <IntegrationWidget />
       </div>
+      <NewsSection />
     </main>
   );
 }

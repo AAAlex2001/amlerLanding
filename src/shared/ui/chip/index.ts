@@ -1,1 +1,7 @@
-export { Chip, ChipGroup, type ChipProps, type ChipGroupProps } from "./Chip";
+export {
+  Chip,
+  ChipGroup,
+  type ChipProps,
+  type ChipGroupProps,
+  type ChipVariant,
+} from "./Chip";
