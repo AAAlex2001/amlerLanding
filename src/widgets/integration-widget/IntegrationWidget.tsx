@@ -26,7 +26,7 @@ export function IntegrationWidget({ className }: IntegrationWidgetProps) {
           <TypographyH3 className={styles.title}>
             Интегрируйте Amler{"\n"}в свой бизнес
           </TypographyH3>
-          <TypographyP tone="onDark">
+          <TypographyP>
             Подходит для обменников, платёжных сервисов, кошельков и
             криптоплатформ.
           </TypographyP>
