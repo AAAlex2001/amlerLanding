@@ -273,6 +273,7 @@
   height: 340px;
   padding: 20px;
   border-radius: 24px;
+  overflow: hidden;
   background: #333333;
 
   @media (min-width: 768px) {
@@ -301,6 +302,10 @@
     position: relative;
     z-index: 1;
   }
+}
+
+.slideMainEmbeddedOverflow {
+  overflow: visible;
 }
 
 .slideMainRisk {
@@ -350,6 +355,12 @@
     width: auto;
     height: auto;
   }
+}
+
+.illustrationEmbeddedOverflow {
+  max-height: none;
+  height: 100%;
+  overflow: visible;
 }
 
 .titleLine {

@@ -20,6 +20,7 @@ export type SliderSlide =
       title: string;
       illustration: ReactNode;
       eyebrow?: string;
+      allowOverflowIllustration?: boolean;
       variant?: undefined;
     }
   | {
@@ -43,6 +44,7 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
       className={cn(
         styles.slideMain,
         styles.slideMainEmbedded,
+        slide.allowOverflowIllustration && styles.slideMainEmbeddedOverflow,
         slide.variant === "risk" && styles.slideMainRisk,
       )}
       onMouseEnter={() => setHovered(true)}
@@ -55,7 +57,11 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
       )}
       {slide.variant !== "risk" && (
         <div
-          className={cn(styles.illustration, styles.illustrationEmbedded)}
+          className={cn(
+            styles.illustration,
+            styles.illustrationEmbedded,
+            slide.allowOverflowIllustration && styles.illustrationEmbeddedOverflow,
+          )}
         >
           <HowItWorksCardInteractionProvider value={hovered}>
             {slide.illustration}
@@ -77,7 +83,7 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
             ))}
           </ChipGroup>
         </>
-      ) : (
+      ) : slide.title !== "" ? (
         <TypographyTextMedium className={styles.embeddedCardCaption}>
           {slide.title.split("\n").map((line, idx) => (
             <span key={idx} className={styles.titleLine}>
@@ -85,7 +91,7 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
             </span>
           ))}
         </TypographyTextMedium>
-      )}
+      ) : null}
     </div>
   );
 }

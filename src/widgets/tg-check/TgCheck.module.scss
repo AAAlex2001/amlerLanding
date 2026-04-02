@@ -4,23 +4,17 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 100%;
+  width: calc(100% + 40px);
+  margin-inline: -20px;
+  padding: 40px 20px;
   background: #222222;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
 }
 
 /* soft blurred background (instead of huge SVG from Figma) */
 .bg {
-  position: absolute;
-  inset: 0;
-  opacity: 0.3;
-  filter: blur(23px);
-  z-index: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(900px 420px at 50% 55%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 60%),
-    radial-gradient(700px 360px at 50% 70%, rgba(154, 151, 97, 0.28) 0%, rgba(154, 151, 97, 0) 55%);
+  display: none;
 }
 
 .inner {
@@ -31,8 +25,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 40px 20px;
+  padding: 0;
   gap: 75px;
+  max-width: 100%;
+  min-width: 0;
+  margin-inline: auto;
 }
 
 .intro {
@@ -63,52 +60,77 @@
   flex: 0 0 auto;
   width: 32px;
   height: 32px;
-
-  @media (min-width: 1440px) {
-    display: none;
-  }
 }
 
 .slider {
   width: 100%;
 }
 
-.phoneSlideImageWrap {
+.phoneSlideFigure {
+  position: relative;
   width: 100%;
   height: 100%;
+  overflow: visible;
+}
+
+.slideTopText {
+  position: static;
+  width: 262px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 16px !important;
+  line-height: 130% !important;
+  white-space: pre-line;
+}
+
+.slideTopRow {
+  position: absolute;
+  left: 0;
+  top: 0;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  overflow: hidden;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.slideIcon {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+}
+
+.phoneFrame {
+  position: absolute;
+  right: 0;
+  top: 111px;
+  width: 175.76px;
+  height: 368px;
+  border-radius: 28.5612px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(5.49253px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 5.49px;
 }
 
 .phoneSlideImage {
-  width: 176px;
-  height: 368px;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.phoneImageBox {
+  position: absolute;
+  right: 0;
+  top: 82px;
+  width: 200px;
+  height: 418px;
+  max-width: none;
+  max-height: none;
 }
 
 .cta {
   width: 100%;
   align-self: stretch;
-}
-
-@media (min-width: 768px) {
-  .inner {
-    padding: 60px 40px;
-    max-width: 688px;
-    margin-inline: auto;
-  }
-
-  .heading {
-    max-width: 420px;
-  }
-}
-
-@media (min-width: 1440px) {
-  .inner {
-    max-width: 1300px;
-    padding: 80px 70px;
-  }
 }
 

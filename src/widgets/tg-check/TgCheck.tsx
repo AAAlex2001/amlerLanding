@@ -3,8 +3,15 @@
 import cn from "classnames";
 import Image from "next/image";
 import { Slider, type SliderSlide } from "@/features/slider";
-import { Button, TypographyH2, TypographyP } from "@/shared/ui";
-import { ProfileGlyph, SwipeGlyph } from "@/shared/ui/icons";
+import { Button, TypographyH2, TypographyP, TypographyTextMedium } from "@/shared/ui";
+import {
+  LightningGlyph,
+  ProfileGlyph,
+  ShieldGlyph,
+  SparklesGlyph,
+  SwipeGlyph,
+  UsersGlyph,
+} from "@/shared/ui/icons";
 import styles from "./TgCheck.module.scss";
 
 export type TgCheckProps = {
@@ -17,30 +24,111 @@ export type TgCheckProps = {
 
 const defaultSlides: SliderSlide[] = [
   {
-    title: "Проверка по адресу, QR или на лету @amler T82Ks21k",
+    title: "",
     illustration: (
-      <div className={styles.phoneSlideImageWrap}>
-        <Image
-          src="/banner.png"
-          alt="Превью бота в Telegram"
-          width={176}
-          height={368}
-          className={styles.phoneSlideImage}
-        />
+      <div className={styles.phoneSlideFigure}>
+        <div className={styles.slideTopRow}>
+          <TypographyTextMedium className={styles.slideTopText}>
+            Проверка «на лету»: @amler T82Ks21k
+          </TypographyTextMedium>
+        </div>
+        <div className={styles.phoneImageBox}>
+          <Image
+            src="/banner.png"
+            alt="Превью бота в Telegram"
+            fill
+            sizes="220px"
+            className={styles.phoneSlideImage}
+          />
+        </div>
       </div>
     ),
   },
   {
-    title: "Проверка «на лету»: @amler T82Ks21k",
+    title: "",
     illustration: (
-      <div className={styles.phoneSlideImageWrap}>
-        <Image
-          src="/banner.png"
-          alt="Превью бота в Telegram"
-          width={176}
-          height={368}
-          className={styles.phoneSlideImage}
-        />
+      <div className={styles.phoneSlideFigure}>
+        <div className={styles.slideTopRow}>
+          <LightningGlyph className={styles.slideIcon} />
+          <TypographyTextMedium className={styles.slideTopText}>
+            Проверка по адресу, QR{"\n"}или на лету @amler T82Ks21k
+          </TypographyTextMedium>
+        </div>
+        <div className={styles.phoneImageBox}>
+          <Image
+            src="/banner.png"
+            alt="Превью бота в Telegram"
+            fill
+            sizes="220px"
+            className={styles.phoneSlideImage}
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "",
+    illustration: (
+      <div className={styles.phoneSlideFigure}>
+        <div className={styles.slideTopRow}>
+          <ShieldGlyph className={styles.slideIcon} />
+          <TypographyTextMedium className={styles.slideTopText}>
+            AI-оценка, риск-скор{"\n"}и портрет владельца
+          </TypographyTextMedium>
+        </div>
+        <div className={styles.phoneImageBox}>
+          <Image
+            src="/banner.png"
+            alt="Превью бота в Telegram"
+            fill
+            sizes="220px"
+            className={styles.phoneSlideImage}
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "",
+    illustration: (
+      <div className={styles.phoneSlideFigure}>
+        <div className={styles.slideTopRow}>
+          <SparklesGlyph className={styles.slideIcon} />
+          <TypographyTextMedium className={styles.slideTopText}>
+            Проверка безопасности кошелька
+          </TypographyTextMedium>
+        </div>
+        <div className={styles.phoneImageBox}>
+          <Image
+            src="/banner.png"
+            alt="Превью бота в Telegram"
+            fill
+            sizes="220px"
+            className={styles.phoneSlideImage}
+          />
+        </div>
+      </div>
+    ),
+  },
+  {
+    title: "",
+    illustration: (
+      <div className={styles.phoneSlideFigure}>
+        <div className={styles.slideTopRow}>
+          <UsersGlyph className={styles.slideIcon} />
+          <TypographyTextMedium className={styles.slideTopText}>
+            Для команд, чатов{"\n"}и P2P-сделок
+          </TypographyTextMedium>
+        </div>
+        <div className={styles.phoneImageBox}>
+          <Image
+            src="/banner.png"
+            alt="Превью бота в Telegram"
+            fill
+            sizes="220px"
+            className={styles.phoneSlideImage}
+          />
+        </div>
       </div>
     ),
   },
