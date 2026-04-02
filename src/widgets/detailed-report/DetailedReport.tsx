@@ -117,7 +117,7 @@ const PRESET_CONTENT: Record<number, PresetContent> = {
     title: "Баланс кошелька",
     description:
       "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
-    imageSrc: "/detailedData/Crypto.svg",
+    imageSrc: "/detailedData/Crypto.png",
   },
   4: {
     title: "История транзакций",
