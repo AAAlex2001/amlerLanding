@@ -11,10 +11,10 @@ import styles from "./page.module.scss";
 export default function Home() {
   return (
     <main className={styles.main}>
-      {/*<div className={styles.heroGroup}>
+      <div className={styles.heroGroup}>
         <Hero />
         <Partners />
-      </div>*/}
+      </div>
       <HowItWorksSlider />
       <div className={styles.reportGroup}>
         <DetailedReport />

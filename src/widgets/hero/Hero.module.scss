@@ -4,8 +4,8 @@
   flex-direction: column;
   gap: 36px;
   width: 100%;
-  margin-inline: auto;
   align-items: stretch;
+  margin: 0 auto;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -32,7 +32,6 @@
   align-self: stretch;
   box-sizing: border-box;
   width: 100%;
-  margin-inline: auto;
   padding: 0;
   gap: 36px;
   flex: 0 0 auto;
@@ -44,7 +43,6 @@
     gap: 10px;
     width: 334px;
     max-width: 334px;
-    margin-inline: 0;
     flex: 0 0 334px;
   }
 
@@ -53,7 +51,6 @@
     gap: 10px;
     width: 420px;
     max-width: 420px;
-    margin-inline: 0;
     min-height: 540px;
     flex: 0 0 420px;
   }
