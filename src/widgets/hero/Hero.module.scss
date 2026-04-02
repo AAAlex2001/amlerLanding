@@ -4,7 +4,6 @@
   flex-direction: column;
   gap: 36px;
   width: 100%;
-  max-width: 100%;
   margin-inline: auto;
   align-items: stretch;
 
@@ -31,7 +30,6 @@
   align-self: stretch;
   box-sizing: border-box;
   width: 100%;
-  max-width: 420px;
   margin-inline: auto;
   padding: 0;
   gap: 36px;
@@ -42,27 +40,38 @@
     justify-content: space-between;
     padding: 40px 0;
     gap: 10px;
-    width: 420px;
-    max-width: 420px;
+    width: 334px;
+    max-width: 334px;
     margin-inline: 0;
+    flex: 0 0 334px;
   }
 
   @media (min-width: 1440px) {
     justify-content: space-between;
     gap: 10px;
-    width: 420px;
+    width: 100%;
     max-width: 420px;
     margin-inline: 0;
+    flex: 0 1 420px;
   }
 }
 
 .heroSlider {
-  flex: 1 1 auto;
+  width: 100%;
+  flex: 0 0 auto;
   min-width: 0;
   align-self: stretch;
 
   @media (min-width: 768px) {
-    min-width: 0;
+    width: 334px;
+    max-width: 334px;
+    flex: 0 0 334px;
+  }
+
+  @media (min-width: 1440px) {
+    width: auto;
+    max-width: none;
+    flex: 1 1 0;
   }
 }
 

@@ -29,13 +29,6 @@ const logoSpring = {
   mass: 0.75,
 };
 
-const slotSpring = {
-  type: "spring" as const,
-  stiffness: 380,
-  damping: 34,
-  mass: 0.9,
-};
-
 export type HeaderProps = {
   className?: string;
   telegramHref?: string;
@@ -73,11 +66,7 @@ export function Header({
             className={styles.logoLink}
             aria-label="Amler — на главную"
           >
-            <motion.span
-              className={styles.logoSlot}
-              animate={{ width: glass ? 41 : 111 }}
-              transition={slotSpring}
-            >
+            <span className={styles.logoSlot}>
               <AnimatePresence mode="wait" initial={false}>
                 {glass ? (
                   <motion.span
@@ -115,7 +104,7 @@ export function Header({
                   </motion.span>
                 )}
               </AnimatePresence>
-            </motion.span>
+            </span>
           </NextLink>
 
           <div className={styles.right}>
