@@ -36,3 +36,8 @@ export {
 } from "./typography";
 export { Pagination, type PaginationProps } from "./pagination";
 export { Chip, ChipGroup, type ChipProps, type ChipGroupProps } from "./chip";
+export {
+  ProgressBar,
+  type ProgressBarProps,
+  type ProgressBarLevel,
+} from "./progress-bar";

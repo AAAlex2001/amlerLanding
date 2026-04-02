@@ -1,0 +1,162 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.tabBar {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px;
+  gap: 20px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  box-sizing: border-box;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.description {
+  color: #a6a6a6;
+}
+
+.levelScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+  transition: box-shadow 0.6s ease;
+}
+
+.levelInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 auto;
+  width: 100%;
+}
+
+.numberRow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.rollingNumber {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.digitSlot {
+  width: 40px;
+  height: 72px;
+  overflow: hidden;
+  margin: 0 -4px;
+}
+
+.digitStrip {
+  display: flex;
+  flex-direction: column;
+}
+
+.digit {
+  display: block;
+  width: 100%;
+  height: 72px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.percentSign {
+  display: block;
+  width: 50px;
+  height: 72px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 64px;
+  line-height: 72px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.riskLabel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.riskLevelSlot {
+  width: 52px;
+  height: 16px;
+  overflow: hidden;
+}
+
+.riskLevelStrip {
+  display: flex;
+  flex-direction: column;
+}
+
+.riskLevelItem {
+  display: block;
+  width: 100%;
+  height: 16px;
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: right;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.riskStatic {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.progressBarWrap {
+  display: flex;
+  justify-content: center;
+}

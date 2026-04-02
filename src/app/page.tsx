@@ -7,6 +7,7 @@ import {
 } from "@/shared/ui/icons";
 import { Hero } from "@/widgets/hero";
 import { HowItWorksSlider } from "@/widgets/how-it-works-slider";
+import { DetailedReport } from "@/widgets/detailed-report";
 import { Partners } from "@/widgets/partners";
 import styles from "./page.module.scss";
 
@@ -51,6 +52,7 @@ export default function Home() {
       </div>
       <Partners />
       <HowItWorksSlider />
+      <DetailedReport />
     </main>
   );
 }

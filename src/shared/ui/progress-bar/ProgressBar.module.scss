@@ -1,0 +1,15 @@
+.bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+
+.sprite {
+  flex: 0 0 6px;
+  width: 6px;
+  align-self: stretch;
+  min-height: 19px;
+  border-radius: 1000px;
+  transition: background 0.4s ease;
+}
