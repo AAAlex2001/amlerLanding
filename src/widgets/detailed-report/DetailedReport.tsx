@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState, useEffect, useCallback, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import cn from "classnames";
 import { Tabs, Tab, TypographyH4, TypographyP } from "@/shared/ui";
@@ -21,6 +21,9 @@ const PRESETS: RiskPreset[] = [
   { value: 45, filled: 8, level: "medium", glow: "rgba(219, 104, 32, 0.5)", labelIndex: 1 },
   { value: 95, filled: 17, level: "high", glow: "#933D3E", labelIndex: 2 },
 ];
+
+const CYCLE = [0, 1, 2, 3] as const;
+const CYCLE_DELAY = 2000;
 
 const RISK_LABELS = ["Низкий", "Средний", "Высокий"];
 
@@ -134,7 +137,19 @@ export function DetailedReport({
   const activePresetIndex = tabs[activeTab]?.presetIndex ?? 0;
   const showRiskScore = activePresetIndex === 0;
 
-  const preset = showRiskScore ? PRESETS[0] : PRESETS[0];
+  const [cycleIndex, setCycleIndex] = useState(0);
+
+  const advanceCycle = useCallback(() => {
+    setCycleIndex((prev) => (prev + 1) % CYCLE.length);
+  }, []);
+
+  useEffect(() => {
+    if (!showRiskScore) return;
+    const id = setInterval(advanceCycle, CYCLE_DELAY);
+    return () => clearInterval(id);
+  }, [advanceCycle, showRiskScore]);
+
+  const preset = PRESETS[CYCLE[cycleIndex]];
   const tens = Math.floor(preset.value / 10) % 10;
   const ones = preset.value % 10;
 

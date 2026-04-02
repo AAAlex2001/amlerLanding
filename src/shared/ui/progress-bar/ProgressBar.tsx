@@ -34,6 +34,7 @@ export function ProgressBar({
           className={styles.sprite}
           style={{
             background: i < filled ? theme.filled : theme.unfilled,
+            transitionDelay: `${i * 30}ms`,
           }}
         />
       ))}

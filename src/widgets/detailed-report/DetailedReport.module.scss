@@ -84,6 +84,7 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  flex: 1 1 auto;
 }
 
 .rollingNumber {
@@ -91,13 +92,13 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 1px;
 }
 
 .digitSlot {
   width: 40px;
   height: 72px;
   overflow: hidden;
-  margin: 0 -4px;
 }
 
 .digitStrip {
