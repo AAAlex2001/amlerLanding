@@ -14,12 +14,41 @@
 
 .bg {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: -300px;
   z-index: 0;
   pointer-events: none;
-  background: url("/planet.svg") no-repeat center 220px;
-  background-size: min(1040px, 100%) auto;
   opacity: 0.5;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("/planet.svg") no-repeat center 220px;
+    background-size: 360px auto;
+
+    @media (min-width: 768px) {
+      background-size: 552px auto;
+    }
+
+    @media (min-width: 1440px) {
+      background-size: 1040px auto;
+    }
+  }
+
+  &::before {
+    mask-image: linear-gradient(to bottom, white 35%, transparent 45%);
+    -webkit-mask-image: linear-gradient(to bottom, white 35%, transparent 45%);
+  }
+
+  &::after {
+    filter: blur(12px);
+    mask-image: linear-gradient(to bottom, transparent 30%, white 42%, transparent 75%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 30%, white 42%, transparent 75%);
+  }
 }
 
 .inner {

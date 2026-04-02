@@ -49,3 +49,16 @@
     padding: 60px 70px;
   }
 }
+
+.integrationGroup {
+  width: 100%;
+  padding: 0 20px 40px;
+
+  @media (min-width: 768px) {
+    padding: 0 40px 50px;
+  }
+
+  @media (min-width: 1440px) {
+    padding: 0 70px 60px;
+  }
+}
