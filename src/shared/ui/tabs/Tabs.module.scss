@@ -1,5 +1,6 @@
 .root {
   display: flex;
+  flex-wrap: nowrap;
 }
 
 .orient_vertical {
@@ -10,7 +11,7 @@
 
 .orient_horizontal {
   flex-direction: row;
-  gap: 40px;
+  gap: 0;
   align-items: flex-start;
 }
 
@@ -22,8 +23,9 @@
   padding: 12px;
   gap: 10px;
   margin: 0;
-  width: 99px;
+  flex: none;
   min-height: 45px;
+  height: 45px;
   font-family: var(--font-family);
   font-size: 16px;
   line-height: 130%;
@@ -92,5 +94,6 @@
 }
 
 .tabLabel {
-  width: 75px;
+  display: inline-block;
+  white-space: nowrap;
 }
