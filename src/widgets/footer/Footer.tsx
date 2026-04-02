@@ -104,7 +104,7 @@ export function Footer({
                 icon={<TgGlyph />}
                 className={styles.previewCtaBtn}
               >
-                Попробовать бесплатно
+                Пороверить бесплатно
               </Button>
             </div>
           </div>
