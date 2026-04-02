@@ -10,9 +10,10 @@
   @media (min-width: 768px) {
     flex-direction: row;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: space-between;
     gap: 20px;
     max-width: 688px;
+    height: 540px;
   }
 
   @media (min-width: 1440px) {
@@ -20,6 +21,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    height: 540px;
   }
 }
 
@@ -49,10 +51,11 @@
   @media (min-width: 1440px) {
     justify-content: space-between;
     gap: 10px;
-    width: 100%;
+    width: 420px;
     max-width: 420px;
     margin-inline: 0;
-    flex: 0 1 420px;
+    min-height: 540px;
+    flex: 0 0 420px;
   }
 }
 
@@ -66,12 +69,14 @@
     width: 334px;
     max-width: 334px;
     flex: 0 0 334px;
+    min-height: 540px;
   }
 
   @media (min-width: 1440px) {
-    width: auto;
-    max-width: none;
-    flex: 1 1 0;
+    width: 600px;
+    max-width: 600px;
+    min-height: 540px;
+    flex: 0 0 600px;
   }
 }
 
