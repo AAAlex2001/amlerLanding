@@ -99,13 +99,7 @@ const PRESET_CONTENT: Record<number, PresetContent> = {
     imageSrc: "/detailedData/AI.svg",
   },
   2: {
-    title: (
-      <>
-        Оценка риска
-        <br />
-        от провайдера
-      </>
-    ),
+    title: "Оценка риска от провайдера",
     description:
       "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
     imageSrc: "/detailedData/Providers.svg",
@@ -145,7 +139,7 @@ export function DetailedReport({
   const ones = preset.value % 10;
 
   const presetContent = PRESET_CONTENT[activePresetIndex];
-  const headerAlign: "center" | "start" = showRiskScore ? "start" : "center";
+  const headerAlign: "center" | "start" = "start";
 
   return (
     <div className={cn(styles.root, className)}>
@@ -164,13 +158,9 @@ export function DetailedReport({
       </div>
 
       <div className={styles.card}>
-        <div
-          className={cn(styles.cardHeader, !showRiskScore && styles.cardHeaderCentered)}
-        >
+        <div className={styles.cardHeader}>
           <TypographyH4 align={headerAlign}>{showRiskScore ? title : presetContent?.title}</TypographyH4>
-          <TypographyP
-            className={cn(styles.description, !showRiskScore && styles.descriptionCentered)}
-          >
+          <TypographyP className={styles.description}>
             {showRiskScore ? description : presetContent?.description}
           </TypographyP>
         </div>
