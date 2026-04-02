@@ -52,7 +52,7 @@ export function Hero({
   heading = "AML-проверка криптокошелька",
   lead = "Агрегированный анализ от 3 AML-провайдеров + AI-оценка риска",
   inputLabel = "Адрес кошелька",
-  inputPlaceholder = "введите адрес кошелька",
+  inputPlaceholder = "Введите адрес кошелька",
   chevronAriaLabel = "Далее",
   providerName = "КоинКит",
   providerSubtitle = "бесплатно",

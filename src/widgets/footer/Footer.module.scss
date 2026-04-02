@@ -1,0 +1,366 @@
+/* Мобилка ~360: padding 40 20 0, gap 20; средний блок gap 36 + padding-bottom 36; превью 310×342 */
+.root {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  padding: 40px 20px 0;
+  gap: 20px;
+  background: #222222;
+  border-top: 1px solid #333333;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  gap: 20px;
+}
+
+.brand {
+  width: 100%;
+}
+
+.topRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+}
+
+.logoLink {
+  display: flex;
+  line-height: 0;
+  color: inherit;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--btn-cta-hover);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.logo {
+  display: block;
+  width: 111px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+.lang {
+  flex-shrink: 0;
+}
+
+/* Frame 337407: column, gap 36, padding 0 0 36 */
+.middle {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  width: 100%;
+  padding: 0 0 36px;
+  box-sizing: border-box;
+}
+
+.upper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.lower {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navLink {
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+}
+
+.navColumn,
+.legalColumn {
+  width: 100%;
+  min-width: 0;
+}
+
+.emailRow {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: inherit;
+
+  &:hover .emailText {
+    color: var(--link-accent-hover);
+  }
+
+  &:active .emailText {
+    color: var(--link-accent-active);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--btn-cta-hover);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+}
+
+.emailIcon {
+  flex-shrink: 0;
+}
+
+.emailText {
+  font-size: 16px;
+  line-height: 110%;
+  letter-spacing: -0.02em;
+}
+
+.legalList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.legalLink {
+  font-size: 16px;
+  line-height: 130%;
+  color: #a6a6a6 !important;
+
+  &:hover {
+    color: var(--link-accent-hover) !important;
+  }
+
+  &:active {
+    color: var(--link-accent-active) !important;
+  }
+
+  &:visited {
+    color: #a6a6a6 !important;
+  }
+}
+
+.copyright {
+  margin: 0;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  color: #a6a6a6;
+}
+
+/* Frame 89: 310.03 × 342 */
+.preview {
+  width: 100%;
+  max-width: 310px;
+  margin-inline: auto;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+.previewFrame {
+  position: relative;
+  width: 100%;
+  max-width: 310px;
+  height: 342px;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+.previewImg {
+  object-fit: cover;
+  object-position: top center;
+}
+
+@media (min-width: 768px) {
+  .root {
+    padding: 50px 40px 0;
+    gap: 20px;
+  }
+
+  .inner {
+    position: relative;
+    max-width: 688px;
+    margin-inline: auto;
+    gap: 20px;
+  }
+
+  .middle {
+    gap: 40px;
+    padding: 0 0 40px;
+    max-width: calc(100% - 330px);
+  }
+
+  .navLink {
+    font-size: 20px;
+    line-height: 110%;
+  }
+
+  .emailText {
+    font-size: 20px;
+    line-height: 110%;
+  }
+
+  .preview {
+    position: absolute;
+    right: 40px;
+    bottom: 0;
+    width: 310px;
+    max-width: 310px;
+    margin-inline: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .root {
+    padding: 60px 70px 0;
+    gap: 20px;
+    isolation: isolate;
+  }
+
+  /*
+   * 1300 = 310 + 20 + (середина) + 20 + 310
+   * Середина ~640 — как Frame 337407; без margin: auto на внутренних рядах,
+   * иначе блоки «плывут» и политики с копирайтом уезжают.
+   */
+  .inner {
+    display: grid;
+    grid-template-columns: 310px minmax(0, 1fr) 310px;
+    gap: 20px;
+    align-items: start;
+    max-width: 1300px;
+    margin-inline: auto;
+  }
+
+  .brand {
+    width: 100%;
+    min-width: 0;
+    grid-column: 1;
+  }
+
+  .middle {
+    grid-column: 2;
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    flex: unset;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 342px;
+    min-height: 342px;
+    max-height: 342px;
+    gap: 40px;
+    padding: 0 0 40px;
+    box-sizing: border-box;
+  }
+
+  .preview {
+    grid-column: 3;
+    position: static;
+    width: 100%;
+    max-width: 310px;
+    margin-inline: 0;
+    justify-self: end;
+  }
+
+  /* Frame 337404: 310×342 */
+  .topRow {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    height: 342px;
+    min-height: 342px;
+    max-height: 342px;
+    padding: 0 0 40px;
+    box-sizing: border-box;
+  }
+
+  /* Frame 337406: вся ширина средней колонки, слева направо */
+  .upper {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  .navColumn {
+    flex: 0 0 310px;
+    width: 310px;
+    min-width: 310px;
+    max-width: 310px;
+  }
+
+  .emailRow {
+    display: flex;
+    align-self: flex-start;
+  }
+
+  /* Frame 337405: legal 310 + gap 20 + copyright */
+  .lower {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 20px;
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    flex-shrink: 0;
+    box-sizing: border-box;
+  }
+
+  .legalColumn {
+    flex: 0 0 310px;
+    width: 310px;
+    min-width: 310px;
+    max-width: 310px;
+  }
+
+  .copyright {
+    flex-shrink: 0;
+    align-self: flex-end;
+  }
+
+  .previewFrame {
+    height: 342px;
+  }
+}

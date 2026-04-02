@@ -105,7 +105,7 @@ const PRESET_CONTENT: Record<number, PresetContent> = {
     title: "Ai-оценка и портрет владельца",
     description:
       "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
-    imageSrc: "/detailedData/AI.svg",
+    imageSrc: "/detailedData/AI.png",
   },
   2: {
     title: "Оценка риска от провайдера",
