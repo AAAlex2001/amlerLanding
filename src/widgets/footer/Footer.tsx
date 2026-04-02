@@ -1,8 +1,8 @@
 import NextLink from "next/link";
 import Image from "next/image";
 import cn from "classnames";
-import { LanguageSelect, TextLink, TypographyText } from "@/shared/ui";
-import { AmlerLogo, MailGlyph } from "@/shared/ui/icons";
+import { Button, LanguageSelect, TextLink, TypographyText } from "@/shared/ui";
+import { AmlerLogo, MailGlyph, TgGlyph } from "@/shared/ui/icons";
 import styles from "./Footer.module.scss";
 
 const NAV_ITEMS = [
@@ -38,7 +38,10 @@ export function Footer({
             >
               <AmlerLogo className={styles.logo} />
             </NextLink>
-            <LanguageSelect className={styles.lang} />
+            <LanguageSelect
+              className={styles.lang}
+              menuOpenUpFromMinWidthPx={1440}
+            />
           </div>
         </div>
 
@@ -92,6 +95,18 @@ export function Footer({
               className={styles.previewImg}
               priority={false}
             />
+            <div className={styles.previewCta}>
+              <Button
+                variant="cta"
+                href="https://t.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+                icon={<TgGlyph />}
+                className={styles.previewCtaBtn}
+              >
+                Попробовать бесплатно
+              </Button>
+            </div>
           </div>
         </div>
       </div>

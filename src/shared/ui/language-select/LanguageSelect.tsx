@@ -2,15 +2,20 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import cn from "classnames";
+import { useMediaQuery } from "@/shared/hooks";
 import { ChevronDownGlyph, FlagRuGlyph, FlagUkGlyph } from "@/shared/ui/icons";
 import styles from "./LanguageSelect.module.scss";
 
 export type LanguageSelectVariant = "default" | "invert";
 
+export type LanguageSelectMenuPlacement = "down" | "up";
+
 export type LanguageOption = { value: string; label: string };
 
 export type LanguageSelectProps = {
   variant?: LanguageSelectVariant;
+  menuPlacement?: LanguageSelectMenuPlacement;
+  menuOpenUpFromMinWidthPx?: number;
   options?: LanguageOption[];
   value?: string;
   defaultValue?: string;
@@ -20,6 +25,8 @@ export type LanguageSelectProps = {
 
 export function LanguageSelect({
   variant = "default",
+  menuPlacement = "down",
+  menuOpenUpFromMinWidthPx,
   options = [
     { value: "ru", label: "RUS" },
     { value: "en", label: "ENG" },
@@ -60,6 +67,16 @@ export function LanguageSelect({
 
   const isDark = variant === "default";
 
+  const openUpMediaQuery =
+    menuOpenUpFromMinWidthPx != null
+      ? `(min-width: ${menuOpenUpFromMinWidthPx}px)`
+      : "(max-width: 0px)";
+  const openUpByViewport = useMediaQuery(openUpMediaQuery);
+  const menuOpensUpward =
+    menuOpenUpFromMinWidthPx != null
+      ? openUpByViewport
+      : menuPlacement === "up";
+
   const Flag = selected.value === "en" ? FlagUkGlyph : FlagRuGlyph;
 
   return (
@@ -90,7 +107,11 @@ export function LanguageSelect({
 
       {open ? (
         <ul
-          className={cn(styles.menu, isDark ? styles.menuDark : styles.menuInvert)}
+          className={cn(
+            styles.menu,
+            isDark ? styles.menuDark : styles.menuInvert,
+            menuOpensUpward && styles.menuUp,
+          )}
           role="listbox"
         >
           {options.map((opt) => {

@@ -16,6 +16,7 @@ export {
   LanguageSelect,
   type LanguageSelectProps,
   type LanguageSelectVariant,
+  type LanguageSelectMenuPlacement,
   type LanguageOption,
 } from "./language-select";
 export {

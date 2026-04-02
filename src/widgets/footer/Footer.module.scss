@@ -200,8 +200,27 @@
 }
 
 .previewImg {
+  z-index: 0;
   object-fit: cover;
   object-position: top center;
+}
+
+.previewCta {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  z-index: 1;
+  transform: translateX(-50%);
+  line-height: normal;
+  width: 224px;
+  display: flex;
+  justify-content: center;
+}
+
+.previewCta .previewCtaBtn {
+  width: 100%;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 @media (min-width: 768px) {
