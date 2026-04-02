@@ -168,6 +168,19 @@ export function HowItWorksStep1Illustration({
           <stop stopColor="white" stopOpacity={0.3} />
           <stop offset={1} stopColor="white" stopOpacity={0.05} />
         </linearGradient>
+
+        <clipPath id={`${uid}_bgblur0`} transform="translate(16 -23)">
+          <path d="M20 43.5H108C116.56 43.5 123.5 50.4396 123.5 59V117C123.5 125.56 116.56 132.5 108 132.5H20C11.4396 132.5 4.5 125.56 4.5 117V59L4.50488 58.5996C4.71725 50.2242 11.5735 43.5 20 43.5Z" />
+        </clipPath>
+        <clipPath id={`${uid}_bgblur1`} transform="translate(-75 -58)">
+          <path d="M97 68.5H119C125.351 68.5 130.5 73.6487 130.5 80V96C130.5 102.351 125.351 107.5 119 107.5H97C90.6487 107.5 85.5 102.351 85.5 96V80C85.5 73.6487 90.6487 68.5 97 68.5Z" />
+        </clipPath>
+        <clipPath id={`${uid}_bgblur0h`} transform="translate(16.608 -18.6912)">
+          <path d="M18.4903 44.3403L106.341 39.2179C114.887 38.7196 122.219 45.2435 122.717 53.7894L126.093 111.691C126.591 120.237 120.068 127.569 111.522 128.067L23.6708 133.189C15.1249 133.688 7.79318 127.164 7.29489 118.618L3.91878 60.7162L3.90034 60.3162C3.62483 51.9427 10.078 44.8308 18.4903 44.3403Z" />
+        </clipPath>
+        <clipPath id={`${uid}_bgblur1h`} transform="translate(-75.484 -53.0154)">
+          <path d="M96.8149 64.8158L118.778 63.5352C125.118 63.1655 130.558 68.0058 130.928 74.3463L131.859 90.3192C132.229 96.6597 127.388 102.099 121.048 102.469L99.0851 103.75C92.7446 104.119 87.3049 99.2791 86.9352 92.9386L86.0038 76.9657C85.6341 70.6252 90.4744 65.1855 96.8149 64.8158Z" />
+        </clipPath>
       </defs>
 
       {/* Монетка: плавный перенос вниз + поворот (как во втором кадре макета) */}
@@ -189,6 +202,59 @@ export function HowItWorksStep1Illustration({
           fill="white"
         />
       </motion.g>
+
+      {/* Blur-слой: всегда на полной непрозрачности, мгновенное переключение формы */}
+      {!coinHidden ? (
+        <g style={{ pointerEvents: "none" }}>
+          <foreignObject x={-16} y={23} width={160} height={130}>
+            <div
+              style={{
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
+                clipPath: `url(#${uid}_bgblur0)`,
+                height: "100%",
+                width: "100%",
+              }}
+            />
+          </foreignObject>
+          <foreignObject x={75} y={58} width={66} height={60}>
+            <div
+              style={{
+                backdropFilter: "blur(5px)",
+                WebkitBackdropFilter: "blur(5px)",
+                clipPath: `url(#${uid}_bgblur1)`,
+                height: "100%",
+                width: "100%",
+              }}
+            />
+          </foreignObject>
+        </g>
+      ) : (
+        <g style={{ pointerEvents: "none" }}>
+          <foreignObject x={-16.608} y={18.6912} width={163.228} height={135.025}>
+            <div
+              style={{
+                backdropFilter: "blur(10px)",
+                WebkitBackdropFilter: "blur(10px)",
+                clipPath: `url(#${uid}_bgblur0h)`,
+                height: "100%",
+                width: "100%",
+              }}
+            />
+          </foreignObject>
+          <foreignObject x={75.484} y={53.0154} width={66.8947} height={61.2542}>
+            <div
+              style={{
+                backdropFilter: "blur(5px)",
+                WebkitBackdropFilter: "blur(5px)",
+                clipPath: `url(#${uid}_bgblur1h)`,
+                height: "100%",
+                width: "100%",
+              }}
+            />
+          </foreignObject>
+        </g>
+      )}
 
       {/* Кошелёк прямой — плавное появление/исчезновение */}
       <motion.g
