@@ -76,6 +76,16 @@
   gap: 20px;
 }
 
+.desktopLeft {
+  width: 334px;
+  height: 610px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
 .slider {
   width: 100%;
 }
@@ -152,7 +162,7 @@
   .root {
     width: 100%;
     margin-inline: 0;
-    padding: 50px 40px;
+    padding: 50px 40px 100px;
   }
 
   .inner {
@@ -162,10 +172,21 @@
   .desktopInfo {
     width: 334px;
     min-width: 0;
+    height: 254px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 32px;
+  }
+
+  .desktopTextGroup {
+    width: 334px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
   }
 
   .desktopHeading {
@@ -183,28 +204,24 @@
   }
 
   .desktopTabs {
-    margin: 0 auto;
-    width: 420px;
-    height: 460px;
+    width: 334px;
+    height: 356px;
     padding: 40px 0 0;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    align-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
     gap: 20px;
   }
 
   .desktopTab {
     position: relative;
-    width: 200px;
-    height: 200px;
-    min-height: 200px;
+    width: 334px;
+    height: 64px;
+    min-height: 64px;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 0;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
     padding: 20px;
     border-radius: 12px;
     background: #333333;
@@ -226,11 +243,8 @@
   .desktopTabText {
     position: relative;
     z-index: 1;
-    width: 160px;
-    align-self: stretch;
+    width: 242px;
     margin: 0;
-    display: flex;
-    align-items: flex-end;
     white-space: pre-line;
     font-size: 16px !important;
     line-height: 130% !important;
@@ -239,16 +253,23 @@
   .desktopImageWrap {
     position: relative;
     width: 334px;
-    height: 610px;
+    height: 670px;
     border-radius: 24px;
     overflow: visible;
     flex: 0 0 auto;
+    top: -20px;
   }
 
   .desktopImage {
     object-fit: contain;
-    object-position: center top;
-    transform: translateY(28px) scale(1.12);
+    object-position: center;
+    transform: none;
+  }
+
+  .desktopPanel {
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 75px;
   }
 }
 
@@ -270,12 +291,23 @@
     flex-wrap: nowrap;
   }
 
+  .desktopLeft {
+    width: auto;
+    display: contents;
+  }
+
   .desktopInfo {
     width: 420px;
     height: 330px;
     padding-top: 40px;
     gap: 32px;
     align-self: flex-start;
+  }
+
+  .desktopTextGroup {
+    width: 420px;
+    height: auto;
+    gap: 20px;
   }
 
   .desktopHeading {
@@ -298,6 +330,7 @@
     height: 680px;
     overflow: hidden;
     border-radius: 24px;
+    top: 0;
   }
 
   .desktopImage {

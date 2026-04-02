@@ -162,14 +162,16 @@ export function TgCheck({
   ctaText = "Зарегистрироваться",
   slides = defaultSlides,
 }: TgCheckProps) {
-  const isDesktop = useMediaQuery("(min-width: 1440px)");
+  const usTablet = useMediaQuery("(min-width: 768px)");
+  const isDesctop = useMediaQuery("(min-width: 1440px)");
+  const isMobile = !usTablet;
 
   return (
     <section className={cn(styles.root, className)}>
       <div className={styles.bg} aria-hidden />
 
       <div className={styles.inner}>
-        {!isDesktop ? (
+        {isMobile ? (
           <>
             <div className={styles.intro}>
               <TypographyH2 className={styles.heading}>{heading}</TypographyH2>
@@ -187,11 +189,13 @@ export function TgCheck({
               {ctaText}
             </Button>
           </>
-        ) : (
+        ) : isDesctop ? (
           <div className={styles.desktopPanel}>
             <div className={styles.desktopInfo}>
-              <TypographyH2 className={styles.desktopHeading}>{heading}</TypographyH2>
-              <TypographyP className={styles.desktopLead}>{lead}</TypographyP>
+              <div className={styles.desktopTextGroup}>
+                <TypographyH2 className={styles.desktopHeading}>{heading}</TypographyH2>
+                <TypographyP className={styles.desktopLead}>{lead}</TypographyP>
+              </div>
               <Button variant="cta" icon={<ProfileGlyph />} className={styles.desktopCta}>
                 {ctaText}
               </Button>
@@ -219,6 +223,44 @@ export function TgCheck({
                   </TypographyTextMedium>
                 </div>
               ))}
+            </div>
+          </div>
+        ) : (
+          <div className={styles.desktopPanel}>
+            <div className={styles.desktopLeft}>
+              <div className={styles.desktopInfo}>
+                <div className={styles.desktopTextGroup}>
+                  <TypographyH2 className={styles.desktopHeading}>{heading}</TypographyH2>
+                  <TypographyP className={styles.desktopLead}>{lead}</TypographyP>
+                </div>
+                <Button variant="cta" icon={<ProfileGlyph />} className={styles.desktopCta}>
+                  {ctaText}
+                </Button>
+              </div>
+
+              <div className={styles.desktopTabs} aria-label="Функции AML-проверки">
+                {desktopTabs.map((item, idx) => (
+                  <div
+                    className={cn(styles.desktopTab, idx === 0 && styles.desktopTabActive)}
+                    key={idx}
+                  >
+                    {item.icon}
+                    <TypographyTextMedium className={styles.desktopTabText}>
+                      {item.text}
+                    </TypographyTextMedium>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.desktopImageWrap} aria-hidden>
+              <Image
+                src="/banner.png"
+                alt="Превью бота в Telegram"
+                fill
+                sizes="334px"
+                className={styles.desktopImage}
+              />
             </div>
           </div>
         )}
