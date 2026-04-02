@@ -162,7 +162,7 @@ export function TgCheck({
   ctaText = "Зарегистрироваться",
   slides = defaultSlides,
 }: TgCheckProps) {
-  const isDesktop = useMediaQuery("(min-width: 768px)");
+  const isDesktop = useMediaQuery("(min-width: 1440px)");
 
   return (
     <section className={cn(styles.root, className)}>
