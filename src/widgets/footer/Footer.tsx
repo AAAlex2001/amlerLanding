@@ -4,6 +4,7 @@ import cn from "classnames";
 import { Button, LanguageSelect, TextLink, TypographyText } from "@/shared/ui";
 import { AmlerLogo, MailGlyph, TgGlyph } from "@/shared/ui/icons";
 import styles from "./Footer.module.scss";
+import { FooterBottomGlow } from "./FooterBottomGlow";
 
 const NAV_ITEMS = [
   { href: "/", label: "Главная" },
@@ -28,6 +29,7 @@ export function Footer({
 }: FooterProps) {
   return (
     <footer className={cn(styles.root, className)}>
+      <FooterBottomGlow />
       <div className={styles.inner}>
         <div className={styles.brand}>
           <div className={styles.topRow}>

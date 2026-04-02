@@ -1,0 +1,34 @@
+.root {
+  position: absolute;
+  left: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mobileBar {
+  display: block;
+  width: 100%;
+  height: 88px;
+  background: linear-gradient(
+    0deg,
+    rgba(154, 151, 97, 0.14) 0%,
+    rgba(154, 151, 97, 0) 100%
+  );
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+.desktopSvg {
+  display: none;
+  width: 100%;
+  height: 118px;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}

@@ -1,6 +1,7 @@
 /* Мобилка ~360: padding 40 20 0, gap 20; средний блок gap 36 + padding-bottom 36; превью 310×342 */
 .root {
   position: relative;
+  overflow-x: hidden;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@
 
 .inner {
   position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   width: 100%;
