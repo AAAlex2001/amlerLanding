@@ -4,8 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: calc(100% + 40px);
-  margin-inline: -20px;
+  width: 100%;
+  margin-inline: 0;
   padding: 40px 20px;
   background: #222222;
   isolation: isolate;
@@ -150,8 +150,8 @@
 
 @media (min-width: 768px) {
   .root {
-    width: calc(100% + 80px);
-    margin-inline: -40px;
+    width: 100%;
+    margin-inline: 0;
     padding: 50px 40px;
   }
 
@@ -254,8 +254,8 @@
 
 @media (min-width: 1440px) {
   .root {
-    width: calc(100% + 140px);
-    margin-inline: -70px;
+    width: 100%;
+    margin-inline: 0;
     padding: 60px 70px;
   }
 

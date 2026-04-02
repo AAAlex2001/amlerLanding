@@ -38,13 +38,15 @@ export type SliderProps = {
 
 function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
   const [hovered, setHovered] = useState(false);
+  const allowOverflowIllustration =
+    slide.variant !== "risk" && Boolean(slide.allowOverflowIllustration);
 
   return (
     <div
       className={cn(
         styles.slideMain,
         styles.slideMainEmbedded,
-        slide.allowOverflowIllustration && styles.slideMainEmbeddedOverflow,
+        allowOverflowIllustration && styles.slideMainEmbeddedOverflow,
         slide.variant === "risk" && styles.slideMainRisk,
       )}
       onMouseEnter={() => setHovered(true)}
@@ -60,7 +62,7 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
           className={cn(
             styles.illustration,
             styles.illustrationEmbedded,
-            slide.allowOverflowIllustration && styles.illustrationEmbeddedOverflow,
+            allowOverflowIllustration && styles.illustrationEmbeddedOverflow,
           )}
         >
           <HowItWorksCardInteractionProvider value={hovered}>
@@ -96,7 +98,11 @@ function EmbeddedSlideCard({ slide }: { slide: SliderSlide }) {
   );
 }
 
-export function Slider({ slides, className, layout = "default" }: SliderProps) {
+export function Slider({
+  slides,
+  className,
+  layout = "default",
+}: SliderProps) {
   const swiperRef = useRef<SwiperType | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const embedded = layout === "embedded";
