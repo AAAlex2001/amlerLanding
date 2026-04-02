@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import cn from "classnames";
 import { Tabs, Tab, TypographyH4, TypographyP } from "@/shared/ui";
@@ -78,12 +78,57 @@ export type DetailedReportProps = {
 
 const defaultTabs: DetailedReportTab[] = [
   { label: "Риск-скор", presetIndex: 0 },
-  { label: "Источники средств", presetIndex: 1 },
-  { label: "Назначение средств", presetIndex: 2 },
-  { label: "Контрагенты", presetIndex: 3 },
-  { label: "Связанные кошельки", presetIndex: 1 },
-  { label: "Транзакции", presetIndex: 2 },
+  { label: "AI-оценка", presetIndex: 1 },
+  { label: "Оценка риска", presetIndex: 2 },
+  { label: "Баланс", presetIndex: 3 },
+  { label: "История", presetIndex: 4 },
+  { label: "Телеграм-бот", presetIndex: 5 },
 ];
+
+type PresetContent = {
+  title: ReactNode;
+  description: string;
+  imageSrc: string;
+};
+
+const PRESET_CONTENT: Record<number, PresetContent> = {
+  1: {
+    title: "Ai-оценка и портрет владельца",
+    description:
+      "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
+    imageSrc: "/detailedData/AI.svg",
+  },
+  2: {
+    title: (
+      <>
+        Оценка риска
+        <br />
+        от провайдера
+      </>
+    ),
+    description:
+      "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
+    imageSrc: "/detailedData/Providers.svg",
+  },
+  3: {
+    title: "Баланс кошелька",
+    description:
+      "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
+    imageSrc: "/detailedData/Crypto.svg",
+  },
+  4: {
+    title: "История транзакций",
+    description:
+      "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
+    imageSrc: "/detailedData/Payments.svg",
+  },
+  5: {
+    title: "Телеграм-бот",
+    description:
+      "Совокупная оценка риска от выбранных провайдеров. Чем выше процент, тем выше риск.",
+    imageSrc: "/detailedData/Robot.svg",
+  },
+};
 
 export function DetailedReport({
   className,
@@ -92,9 +137,15 @@ export function DetailedReport({
   tabs = defaultTabs,
 }: DetailedReportProps) {
   const [activeTab, setActiveTab] = useState(0);
-  const preset = PRESETS[tabs[activeTab]?.presetIndex ?? 0];
+  const activePresetIndex = tabs[activeTab]?.presetIndex ?? 0;
+  const showRiskScore = activePresetIndex === 0;
+
+  const preset = showRiskScore ? PRESETS[0] : PRESETS[0];
   const tens = Math.floor(preset.value / 10) % 10;
   const ones = preset.value % 10;
+
+  const presetContent = PRESET_CONTENT[activePresetIndex];
+  const headerAlign: "center" | "start" = showRiskScore ? "start" : "center";
 
   return (
     <div className={cn(styles.root, className)}>
@@ -113,39 +164,56 @@ export function DetailedReport({
       </div>
 
       <div className={styles.card}>
-        <div className={styles.cardHeader}>
-          <TypographyH4 align="start">{title}</TypographyH4>
-          <TypographyP className={styles.description}>{description}</TypographyP>
+        <div
+          className={cn(styles.cardHeader, !showRiskScore && styles.cardHeaderCentered)}
+        >
+          <TypographyH4 align={headerAlign}>{showRiskScore ? title : presetContent?.title}</TypographyH4>
+          <TypographyP
+            className={cn(styles.description, !showRiskScore && styles.descriptionCentered)}
+          >
+            {showRiskScore ? description : presetContent?.description}
+          </TypographyP>
         </div>
 
-        <div
-          className={styles.levelScreen}
-          style={{
-            boxShadow: `inset 0px 4px 116.8px ${preset.glow}`,
-          }}
-        >
-          <div className={styles.levelInner}>
-            <div className={styles.numberRow}>
-              <div className={styles.rollingNumber}>
-                <DigitRoller digit={tens} />
-                <DigitRoller digit={ones} />
-                <span className={styles.percentSign}>%</span>
+        {showRiskScore ? (
+          <div
+            className={styles.levelScreen}
+            style={{
+              boxShadow: `inset 0px 4px 116.8px ${preset.glow}`,
+            }}
+          >
+            <div className={styles.levelInner}>
+              <div className={styles.numberRow}>
+                <div className={styles.rollingNumber}>
+                  <DigitRoller digit={tens} />
+                  <DigitRoller digit={ones} />
+                  <span className={styles.percentSign}>%</span>
+                </div>
+                <div className={styles.riskLabel}>
+                  <RiskLevelRoller index={preset.labelIndex} />
+                  <span className={styles.riskStatic}>уровень риска</span>
+                </div>
               </div>
-              <div className={styles.riskLabel}>
-                <RiskLevelRoller index={preset.labelIndex} />
-                <span className={styles.riskStatic}>уровень риска</span>
-              </div>
-            </div>
 
-            <div className={styles.progressBarWrap}>
-              <ProgressBar
-                filled={preset.filled}
-                total={18}
-                level={preset.level}
-              />
+              <div className={styles.progressBarWrap}>
+                <ProgressBar
+                  filled={preset.filled}
+                  total={18}
+                  level={preset.level}
+                />
+              </div>
             </div>
           </div>
-        </div>
+        ) : (
+          <div className={styles.svgScreen}>
+            <img
+              src={presetContent?.imageSrc}
+              alt={typeof presetContent?.title === "string" ? presetContent.title : "Detailed report"}
+              className={styles.svgImg}
+              loading="lazy"
+            />
+          </div>
+        )}
       </div>
     </div>
   );

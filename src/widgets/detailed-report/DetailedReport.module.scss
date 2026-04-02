@@ -38,8 +38,18 @@
   width: 100%;
 }
 
+.cardHeaderCentered {
+  align-items: center;
+  text-align: center;
+}
+
 .description {
   color: #a6a6a6;
+}
+
+.descriptionCentered {
+  text-align: center;
+  width: 100%;
 }
 
 .levelScreen {
@@ -159,4 +169,23 @@
 .progressBarWrap {
   display: flex;
   justify-content: center;
+}
+
+.svgScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 26px 22px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  box-sizing: border-box;
+  flex: 1 1 auto;
+}
+
+.svgImg {
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  display: block;
 }
