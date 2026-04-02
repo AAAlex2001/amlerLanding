@@ -1,3 +1,5 @@
+"use client";
+
 import cn from "classnames";
 import {
   TypographyH3,
@@ -5,6 +7,7 @@ import {
   Button,
   Chip,
 } from "@/shared/ui";
+import { IntegrationIllustration } from "./IntegrationIllustration";
 import styles from "./IntegrationWidget.module.scss";
 
 const CHIPS = [
@@ -46,12 +49,7 @@ export function IntegrationWidget({ className }: IntegrationWidgetProps) {
         </div>
       </div>
 
-      <img
-        src="/integration-widget/illustration.svg"
-        alt="Интеграция Amler"
-        className={styles.illustration}
-        loading="lazy"
-      />
+      <IntegrationIllustration className={styles.illustration} />
     </section>
   );
 }

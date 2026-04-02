@@ -168,7 +168,12 @@ export function TgCheck({
 
   return (
     <section className={cn(styles.root, className)}>
-      <div className={styles.bg} aria-hidden />
+      <div className={styles.bg} aria-hidden>
+        <div className={styles.bgLayer} />
+        <div className={styles.bgLayer} />
+        <div className={styles.bgLayer} />
+        <div className={styles.bgLayer} />
+      </div>
 
       <div className={styles.inner}>
         {isMobile ? (
