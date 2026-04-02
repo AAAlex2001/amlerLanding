@@ -2,49 +2,23 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 36px;
-  gap: 36px;
+  align-items: stretch;
+  gap: 20px;
   width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 36px;
   background: #333333;
   border-radius: 24px;
-
-  @media (min-width: 768px) {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
-    gap: 40px;
-    max-width: 688px;
-    margin-inline: auto;
-  }
-
-  @media (min-width: 1440px) {
-    display: grid;
-    grid-template-columns: 378px 1fr 380px;
-    grid-template-rows: 1fr auto;
-    align-items: start;
-    max-width: 1300px;
-    padding: 40px;
-    gap: 40px;
-  }
 }
 
-.body {
+.stack {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 36px;
-
-  @media (min-width: 768px) {
-    gap: 40px;
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-
-  @media (min-width: 1440px) {
-    display: contents;
-  }
+  width: 100%;
+  min-width: 0;
 }
 
 .textBlock {
@@ -52,35 +26,33 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
-
-  @media (min-width: 1440px) {
-    grid-column: 1;
-    grid-row: 1;
-  }
+  width: 100%;
 }
 
-.subtitle {
-  opacity: 0.5;
+.title {
+  text-align: start;
+  align-self: flex-start;
+  max-width: 193px;
 }
 
 .chips {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: flex-start;
   gap: 8px;
+  width: 100%;
+}
 
-  @media (min-width: 768px) {
-    flex-direction: row;
-  }
+.chip {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  padding: 10px;
+  min-height: 32px;
 
-  @media (min-width: 1440px) {
-    grid-column: 3;
-    grid-row: 1 / -1;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-content: flex-end;
-    align-self: stretch;
+  & > span {
+    font-size: 14px;
+    line-height: 130%;
+    letter-spacing: -0.02em;
   }
 }
 
@@ -90,27 +62,103 @@
   align-items: stretch;
   gap: 8px;
   width: 100%;
+}
 
-  @media (min-width: 768px) {
-    align-self: stretch;
-  }
-
-  @media (min-width: 1440px) {
-    grid-column: 1;
-    grid-row: 2;
-    flex-direction: row;
-    width: auto;
-    align-items: flex-start;
-  }
+.btnPrimary,
+.btnSecondary {
+  width: 100%;
 }
 
 .illustration {
-  flex: 0 0 auto;
+  flex-shrink: 0;
   width: 240px;
   height: 240px;
   align-self: center;
+}
 
-  @media (min-width: 1440px) {
+@media (min-width: 768px) {
+  .root {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 688px;
+    margin-inline: auto;
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .stack {
+    flex: 1 1 368px;
+    max-width: 368px;
+    gap: 40px;
+  }
+
+  .title {
+    max-width: 232px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .root {
+    display: grid;
+    grid-template-columns: 378px 1fr 380px;
+    grid-template-rows: auto auto;
+    align-items: start;
+    column-gap: 40px;
+    row-gap: 40px;
+    max-width: 1300px;
+    margin-inline: auto;
+    padding: 40px;
+  }
+
+  .stack {
+    display: contents;
+  }
+
+  .textBlock {
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    max-width: 378px;
+  }
+
+  .title {
+    max-width: 309px;
+  }
+
+  .chips {
+    grid-column: 3;
+    grid-row: 1 / -1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-items: flex-start;
+    width: 380px;
+    max-width: 100%;
+    justify-self: end;
+  }
+
+  .buttons {
+    grid-column: 1;
+    grid-row: 2;
+    flex-direction: row;
+    align-items: flex-start;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .btnPrimary {
+    width: 214px;
+    flex: 0 0 auto;
+  }
+
+  .btnSecondary {
+    width: 140px;
+    flex: 0 0 auto;
+  }
+
+  .illustration {
     grid-column: 2;
     grid-row: 1 / -1;
     justify-self: center;

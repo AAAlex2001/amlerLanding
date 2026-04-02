@@ -1,12 +1,7 @@
 "use client";
 
 import cn from "classnames";
-import {
-  TypographyH3,
-  TypographyP,
-  Button,
-  Chip,
-} from "@/shared/ui";
+import { TypographyH3, TypographyP, Button, Chip } from "@/shared/ui";
 import { IntegrationIllustration } from "./IntegrationIllustration";
 import styles from "./IntegrationWidget.module.scss";
 
@@ -26,12 +21,12 @@ export type IntegrationWidgetProps = {
 export function IntegrationWidget({ className }: IntegrationWidgetProps) {
   return (
     <section className={cn(styles.root, className)}>
-      <div className={styles.body}>
+      <div className={styles.stack}>
         <div className={styles.textBlock}>
-          <TypographyH3>
+          <TypographyH3 className={styles.title}>
             Интегрируйте Amler{"\n"}в свой бизнес
           </TypographyH3>
-          <TypographyP className={styles.subtitle}>
+          <TypographyP tone="onDark">
             Подходит для обменников, платёжных сервисов, кошельков и
             криптоплатформ.
           </TypographyP>
@@ -39,13 +34,19 @@ export function IntegrationWidget({ className }: IntegrationWidgetProps) {
 
         <div className={styles.chips}>
           {CHIPS.map((label) => (
-            <Chip key={label}>{label}</Chip>
+            <Chip key={label} className={styles.chip}>
+              {label}
+            </Chip>
           ))}
         </div>
 
         <div className={styles.buttons}>
-          <Button variant="cta">Открыть документацию</Button>
-          <Button variant="secondary">Техподдержка</Button>
+          <Button variant="cta" className={styles.btnPrimary}>
+            Открыть документацию
+          </Button>
+          <Button variant="secondary" className={styles.btnSecondary}>
+            Техподдержка
+          </Button>
         </div>
       </div>
 

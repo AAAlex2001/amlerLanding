@@ -14,7 +14,10 @@ export type TypographyH3Props = WithClass &
   Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
 
 export type TypographyPProps = WithClass &
-  Omit<HTMLAttributes<HTMLParagraphElement>, "className">;
+  Omit<HTMLAttributes<HTMLParagraphElement>, "className"> & {
+    /** onDark — site/Body/L-100 на тёмной карточке (белый 50%) */
+    tone?: "default" | "onDark";
+  };
 
 export type TypographyH4Props = WithClass & {
   /** center — маркетинговый слайдер; start — карточки AML и т.п. */
@@ -54,9 +57,15 @@ export function TypographyH3({ children, className, ...rest }: TypographyH3Props
   );
 }
 
-export function TypographyP({ children, className, ...rest }: TypographyPProps) {
+export function TypographyP({
+  children,
+  className,
+  tone = "default",
+  ...rest
+}: TypographyPProps) {
+  const base = tone === "onDark" ? styles.leadOnDark : styles.lead;
   return (
-    <p className={cn(styles.lead, className)} {...rest}>
+    <p className={cn(base, className)} {...rest}>
       {children}
     </p>
   );
