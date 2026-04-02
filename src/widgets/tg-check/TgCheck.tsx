@@ -189,26 +189,12 @@ export function TgCheck({
           </>
         ) : (
           <div className={styles.desktopPanel}>
-            <div className={styles.desktopCol}>
+            <div className={styles.desktopInfo}>
               <TypographyH2 className={styles.desktopHeading}>{heading}</TypographyH2>
               <TypographyP className={styles.desktopLead}>{lead}</TypographyP>
               <Button variant="cta" icon={<ProfileGlyph />} className={styles.desktopCta}>
                 {ctaText}
               </Button>
-
-              <div className={styles.desktopTabs} aria-label="Функции AML-проверки">
-                {desktopTabs.map((item, idx) => (
-                  <div
-                    className={cn(styles.desktopTab, idx === 0 && styles.desktopTabActive)}
-                    key={idx}
-                  >
-                    {item.icon}
-                    <TypographyTextMedium className={styles.desktopTabText}>
-                      {item.text}
-                    </TypographyTextMedium>
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className={styles.desktopImageWrap} aria-hidden>
@@ -219,6 +205,20 @@ export function TgCheck({
                 sizes="334px"
                 className={styles.desktopImage}
               />
+            </div>
+
+            <div className={styles.desktopTabs} aria-label="Функции AML-проверки">
+              {desktopTabs.map((item, idx) => (
+                <div
+                  className={cn(styles.desktopTab, idx === 0 && styles.desktopTabActive)}
+                  key={idx}
+                >
+                  {item.icon}
+                  <TypographyTextMedium className={styles.desktopTabText}>
+                    {item.text}
+                  </TypographyTextMedium>
+                </div>
+              ))}
             </div>
           </div>
         )}
