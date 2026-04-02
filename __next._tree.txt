@@ -1,8 +1,8 @@
 :HL["/amlerLanding/_next/static/chunks/18101fz4qh86z.css","style"]
 :HL["/amlerLanding/_next/static/chunks/0ou-yioapmxzu.css","style"]
-:HL["/amlerLanding/_next/static/chunks/0elwd331vj30..css","style"]
+:HL["/amlerLanding/_next/static/chunks/04bo~5ob59f8l.css","style"]
 :HL["/slider/1.svg","image"]
 :HL["/slider/2.svg","image"]
 :HL["/slider/3.svg","image"]
 :HL["/slider/4.svg","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"voBsGIWMN8Wbulo9fZ-IK"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"pMMNCVZ3JnJyJnmbprKlt"}
