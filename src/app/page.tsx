@@ -8,6 +8,7 @@ import {
 import { Hero } from "@/widgets/hero";
 import { HowItWorksSlider } from "@/widgets/how-it-works-slider";
 import { DetailedReport } from "@/widgets/detailed-report";
+import { FreeChecks } from "@/widgets/free-checks";
 import { Partners } from "@/widgets/partners";
 import styles from "./page.module.scss";
 
@@ -52,7 +53,10 @@ export default function Home() {
       </div>
       <Partners />
       <HowItWorksSlider />
-      <DetailedReport />
+      <div className={styles.reportGroup}>
+        <DetailedReport />
+        <FreeChecks />
+      </div>
     </main>
   );
 }

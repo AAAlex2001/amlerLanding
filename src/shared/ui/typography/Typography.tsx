@@ -10,6 +10,9 @@ export type TypographyH1Props = WithClass &
 export type TypographyH2Props = WithClass &
   Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
 
+export type TypographyH3Props = WithClass &
+  Omit<HTMLAttributes<HTMLHeadingElement>, "className">;
+
 export type TypographyPProps = WithClass &
   Omit<HTMLAttributes<HTMLParagraphElement>, "className">;
 
@@ -40,6 +43,14 @@ export function TypographyH2({ children, className, ...rest }: TypographyH2Props
     <h2 className={cn(styles.heading2, className)} {...rest}>
       {children}
     </h2>
+  );
+}
+
+export function TypographyH3({ children, className, ...rest }: TypographyH3Props) {
+  return (
+    <h3 className={cn(styles.heading3, className)} {...rest}>
+      {children}
+    </h3>
   );
 }
 

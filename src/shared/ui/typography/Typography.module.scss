@@ -42,6 +42,29 @@
   }
 }
 
+/* site/Heading/H3 — промо-блоки (макет 360 / 768 / 1440) */
+.heading3 {
+  margin: 0;
+  font-family: var(--font-family);
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    font-size: 24px;
+    line-height: 120%;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 32px;
+    line-height: 120%;
+  }
+}
+
 /* Основной текст 16/130, белый (чипы, подписи) */
 .text {
   margin: 0;

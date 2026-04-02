@@ -21,6 +21,7 @@ export {
 export {
   TypographyH1,
   TypographyH2,
+  TypographyH3,
   TypographyH4,
   TypographyText,
   TypographyTextMedium,
@@ -28,6 +29,7 @@ export {
   TypographyP,
   type TypographyH1Props,
   type TypographyH2Props,
+  type TypographyH3Props,
   type TypographyH4Props,
   type TypographyTextProps,
   type TypographyTextMediumProps,

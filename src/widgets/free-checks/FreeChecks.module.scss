@@ -1,0 +1,75 @@
+.root {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 36px;
+  gap: 36px;
+  width: 100%;
+  isolation: isolate;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+
+  @media (min-width: 768px) {
+    padding: 40px;
+    gap: 40px;
+    max-width: 688px;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1440px) {
+    max-width: 1300px;
+  }
+}
+
+/* Gradient bars background */
+.bars {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  position: absolute;
+  width: 1296px;
+  height: 289px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bar {
+  flex: 0 0 144px;
+  width: 144px;
+  position: relative;
+}
+
+.barInner {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(0deg, rgba(154, 151, 97, 0.3) 0%, rgba(154, 151, 97, 0) 100%);
+  backdrop-filter: blur(10px);
+}
+
+/* Content */
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  z-index: 1;
+}
+
+.subtitle {
+  text-align: center;
+  color: #a6a6a6;
+}
+
+.cta {
+  z-index: 2;
+}
