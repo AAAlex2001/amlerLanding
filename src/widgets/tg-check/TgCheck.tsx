@@ -4,6 +4,7 @@ import cn from "classnames";
 import type { ReactNode } from "react";
 import Image from "next/image";
 import { Slider, type SliderSlide } from "@/features/slider";
+import { useMediaQuery } from "@/shared/hooks";
 import { Button, TypographyH2, TypographyP, TypographyTextMedium } from "@/shared/ui";
 import {
   LightningGlyph,
@@ -161,60 +162,66 @@ export function TgCheck({
   ctaText = "Зарегистрироваться",
   slides = defaultSlides,
 }: TgCheckProps) {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   return (
     <section className={cn(styles.root, className)}>
       <div className={styles.bg} aria-hidden />
 
       <div className={styles.inner}>
-        <div className={styles.intro}>
-          <TypographyH2 className={styles.heading}>{heading}</TypographyH2>
-          <div className={styles.leadRow}>
-            <TypographyP className={styles.lead}>{lead}</TypographyP>
-            <div className={styles.swipeWrap} aria-hidden>
-              <SwipeGlyph />
-            </div>
+        {!isDesktop ? (
+          <>
+            <div className={styles.intro}>
+              <TypographyH2 className={styles.heading}>{heading}</TypographyH2>
+              <div className={styles.leadRow}>
+                <TypographyP className={styles.lead}>{lead}</TypographyP>
+                <div className={styles.swipeWrap} aria-hidden>
+                  <SwipeGlyph />
+                </div>
+              </div>
           </div>
-        </div>
 
-        <div className={styles.desktopPanel}>
-          <div className={styles.desktopCol}>
-            <TypographyH2 className={styles.desktopHeading}>{heading}</TypographyH2>
-            <TypographyP className={styles.desktopLead}>{lead}</TypographyP>
-            <Button variant="cta" icon={<ProfileGlyph />} className={styles.desktopCta}>
+            <Slider layout="embedded" slides={slides} className={styles.slider} />
+
+            <Button variant="cta" icon={<ProfileGlyph />} className={styles.cta}>
               {ctaText}
             </Button>
+          </>
+        ) : (
+          <div className={styles.desktopPanel}>
+            <div className={styles.desktopCol}>
+              <TypographyH2 className={styles.desktopHeading}>{heading}</TypographyH2>
+              <TypographyP className={styles.desktopLead}>{lead}</TypographyP>
+              <Button variant="cta" icon={<ProfileGlyph />} className={styles.desktopCta}>
+                {ctaText}
+              </Button>
 
-            <div className={styles.desktopTabs} aria-label="Функции AML-проверки">
-              {desktopTabs.map((item, idx) => (
-                <div
-                  className={cn(styles.desktopTab, idx === 0 && styles.desktopTabActive)}
-                  key={idx}
-                >
-                  {item.icon}
-                  <TypographyTextMedium className={styles.desktopTabText}>
-                    {item.text}
-                  </TypographyTextMedium>
-                </div>
-              ))}
+              <div className={styles.desktopTabs} aria-label="Функции AML-проверки">
+                {desktopTabs.map((item, idx) => (
+                  <div
+                    className={cn(styles.desktopTab, idx === 0 && styles.desktopTabActive)}
+                    key={idx}
+                  >
+                    {item.icon}
+                    <TypographyTextMedium className={styles.desktopTabText}>
+                      {item.text}
+                    </TypographyTextMedium>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className={styles.desktopImageWrap} aria-hidden>
+              <Image
+                src="/banner.png"
+                alt="Превью бота в Telegram"
+                fill
+                sizes="334px"
+                className={styles.desktopImage}
+              />
             </div>
           </div>
-
-          <div className={styles.desktopImageWrap} aria-hidden>
-            <Image
-              src="/banner.png"
-              alt="Превью бота в Telegram"
-              fill
-              sizes="334px"
-              className={styles.desktopImage}
-            />
-          </div>
-        </div>
-
-        <Slider layout="embedded" slides={slides} className={styles.slider} />
-
-        <Button variant="cta" icon={<ProfileGlyph />} className={styles.cta}>
-          {ctaText}
-        </Button>
+        )}
       </div>
     </section>
   );

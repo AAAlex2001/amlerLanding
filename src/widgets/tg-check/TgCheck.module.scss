@@ -63,7 +63,12 @@
 }
 
 .desktopPanel {
-  display: none;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
 }
 
 .slider {
@@ -149,24 +154,6 @@
     max-width: 688px;
   }
 
-  .swipeWrap {
-    display: none;
-  }
-
-  .slider,
-  .cta {
-    display: none;
-  }
-
-  .desktopPanel {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
   .desktopCol {
     width: 334px;
     min-width: 0;
@@ -174,10 +161,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 32px;
-  }
-
-  .intro {
-    display: none;
   }
 
   .desktopHeading {
