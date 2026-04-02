@@ -21,6 +21,8 @@ const NAV_SECONDARY = [
 
 const DEFAULT_TELEGRAM_HREF = "https://t.me/";
 const SCROLL_THRESHOLD = 32;
+/** Анимация full → mark только от этого брейкпоинта (как сетка хедера) */
+const LOGO_COMPACT_MIN_WIDTH_PX = 1440;
 
 const logoSpring = {
   type: "spring" as const,
@@ -39,6 +41,17 @@ export function Header({
   telegramHref = DEFAULT_TELEGRAM_HREF,
 }: HeaderProps) {
   const [glass, setGlass] = useState(false);
+  const [wideEnoughForLogoSwap, setWideEnoughForLogoSwap] = useState(false);
+
+  useEffect(() => {
+    const mq = window.matchMedia(
+      `(min-width: ${LOGO_COMPACT_MIN_WIDTH_PX}px)`,
+    );
+    const onMq = () => setWideEnoughForLogoSwap(mq.matches);
+    onMq();
+    mq.addEventListener("change", onMq);
+    return () => mq.removeEventListener("change", onMq);
+  }, []);
 
   useEffect(() => {
     const sync = () => setGlass(window.scrollY > SCROLL_THRESHOLD);
@@ -46,6 +59,8 @@ export function Header({
     window.addEventListener("scroll", sync, { passive: true });
     return () => window.removeEventListener("scroll", sync);
   }, []);
+
+  const useCompactLogo = glass && wideEnoughForLogoSwap;
 
   return (
     <header className={cn(styles.root, glass && styles.rootGlass, className)}>
@@ -68,7 +83,7 @@ export function Header({
           >
             <span className={styles.logoSlot}>
               <AnimatePresence mode="wait" initial={false}>
-                {glass ? (
+                {useCompactLogo ? (
                   <motion.span
                     key="mark"
                     initial={{ opacity: 0, scale: 0.88, filter: "blur(6px)" }}

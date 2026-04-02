@@ -5,7 +5,7 @@ import {
   TypographyH5,
   TypographyP,
   TypographyCaption,
-  TextLink,
+  TypographyText,
   Chip,
 } from "@/shared/ui";
 import {
@@ -82,13 +82,20 @@ const DEFAULT_ARTICLES: NewsArticle[] = [
   },
 ];
 
-function NewsArticleCard({ article }: { article: NewsArticle }) {
+type NewsArticleCardProps = {
+  article: NewsArticle;
+  onReadClick?: (article: NewsArticle) => void;
+};
+
+function NewsArticleCard({ article, onReadClick }: NewsArticleCardProps) {
   return (
     <article className={styles.article}>
-      <div
-        className={styles.cover}
-        style={{ backgroundImage: `url(${article.imageSrc})` }}
-      >
+      <div className={styles.cover}>
+        <div
+          className={styles.coverMedia}
+          style={{ backgroundImage: `url(${article.imageSrc})` }}
+          aria-hidden
+        />
         <Chip variant="accent">{article.badgeLabel}</Chip>
       </div>
       <div className={styles.body}>
@@ -109,9 +116,15 @@ function NewsArticleCard({ article }: { article: NewsArticle }) {
         <div className={styles.textBlock}>
           <TypographyH5>{article.title}</TypographyH5>
           <TypographyP className={styles.excerpt}>{article.excerpt}</TypographyP>
-          <TextLink href={article.href} className={styles.readLink}>
-            Читать статью
-          </TextLink>
+          <button
+            type="button"
+            className={styles.hit}
+            onClick={() => onReadClick?.(article)}
+          >
+            <TypographyText className={styles.accentText}>
+              Читать статью
+            </TypographyText>
+          </button>
         </div>
       </div>
     </article>
@@ -121,13 +134,15 @@ function NewsArticleCard({ article }: { article: NewsArticle }) {
 export type NewsSectionProps = {
   className?: string;
   articles?: NewsArticle[];
-  allArticlesHref?: string;
+  onAllArticlesClick?: () => void;
+  onArticleClick?: (article: NewsArticle) => void;
 };
 
 export function NewsSection({
   className,
   articles = DEFAULT_ARTICLES,
-  allArticlesHref = "/news",
+  onAllArticlesClick,
+  onArticleClick,
 }: NewsSectionProps) {
   return (
     <section
@@ -138,9 +153,15 @@ export function NewsSection({
         <div className={styles.headRow}>
           <div className={styles.headText}>
             <TypographyH2 id="news-section-title">Статьи</TypographyH2>
-            <TextLink href={allArticlesHref} className={styles.allLink}>
-              Все статьи
-            </TextLink>
+            <button
+              type="button"
+              className={styles.hit}
+              onClick={() => onAllArticlesClick?.()}
+            >
+              <TypographyText className={styles.accentText}>
+                Все статьи
+              </TypographyText>
+            </button>
           </div>
           <SwipeGlyph className={styles.swipe} aria-hidden />
         </div>
@@ -153,7 +174,10 @@ export function NewsSection({
         >
           {articles.map((article) => (
             <SwiperSlide key={article.id} className={styles.slide}>
-              <NewsArticleCard article={article} />
+              <NewsArticleCard
+                article={article}
+                onReadClick={onArticleClick}
+              />
             </SwiperSlide>
           ))}
         </Swiper>

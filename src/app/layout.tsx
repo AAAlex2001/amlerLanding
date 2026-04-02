@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body className="min-h-dvh antialiased">
+      <body>
         <Header />
         {children}
       </body>

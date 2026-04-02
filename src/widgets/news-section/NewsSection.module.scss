@@ -1,31 +1,23 @@
 .root {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
   width: 100%;
   padding: 40px 20px 80px;
   background: #222222;
 }
 
 .inner {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 40px;
   width: 100%;
   max-width: 1300px;
   margin-inline: auto;
-  gap: 40px;
 }
 
 .headRow {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
   gap: 20px;
-  width: 100%;
 }
 
 .headText {
@@ -33,10 +25,29 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 12px;
+  min-width: 0;
 }
 
-.allLink {
-  line-height: 130%;
+.hit {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: inline-flex;
+}
+
+.hit .accentText {
+  color: var(--link-accent);
+  transition: color 0.15s ease;
+}
+
+.hit:hover .accentText {
+  color: var(--link-accent-hover);
+}
+
+.hit:active .accentText {
+  color: var(--link-accent-active);
 }
 
 .swipe {
@@ -48,18 +59,15 @@
 
 .swiper {
   width: 100%;
-  margin: 0;
   overflow: hidden;
 }
 
 .slide {
-  box-sizing: border-box;
   width: 300px;
   height: auto;
 }
 
 .article {
-  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -68,18 +76,27 @@
 }
 
 .cover {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  position: relative;
+  overflow: hidden;
   width: 100%;
   min-height: 187px;
   padding: 12px;
-  gap: 10px;
   border-radius: 12px;
   background-color: #333333;
+
+  & > :not(.coverMedia) {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.coverMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   background-size: cover;
   background-position: center;
+  transition: transform 0.35s ease;
 }
 
 .body {
@@ -89,12 +106,10 @@
   width: 100%;
   padding: 0 12px;
   gap: 12px;
-  box-sizing: border-box;
 }
 
 .metaRow {
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   gap: 12px;
@@ -103,7 +118,6 @@
 
 .metaItem {
   display: inline-flex;
-  flex-direction: row;
   align-items: center;
   gap: 8px;
 }
@@ -123,8 +137,15 @@
   overflow: hidden;
 }
 
-.readLink {
-  margin-top: 0;
+@media (hover: hover) {
+  .article:hover .coverMedia {
+    will-change: transform;
+    transform: scale(1.04);
+  }
+
+  .article:not(:hover) .coverMedia {
+    will-change: auto;
+  }
 }
 
 @media (min-width: 768px) {
@@ -134,6 +155,7 @@
 
   .inner {
     gap: 44px;
+    max-width: 688px;
   }
 
   .slide {
@@ -156,10 +178,20 @@
 
   .inner {
     gap: 48px;
+    max-width: 1300px;
   }
 
   .headRow {
     align-items: center;
+  }
+
+  .headText {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex: 1;
+    width: 100%;
   }
 
   .swipe {
