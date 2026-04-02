@@ -14,3 +14,4 @@ export * from "./crypto";
 export * from "./interface";
 export * from "./how-it-works";
 export * from "./slider";
+export * from "./other";

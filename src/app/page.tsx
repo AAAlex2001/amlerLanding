@@ -10,6 +10,7 @@ import { HowItWorksSlider } from "@/widgets/how-it-works-slider";
 import { DetailedReport } from "@/widgets/detailed-report";
 import { FreeChecks } from "@/widgets/free-checks";
 import { Partners } from "@/widgets/partners";
+import { TgCheck } from "@/widgets/tg-check";
 import styles from "./page.module.scss";
 
 const heroCopy = {
@@ -57,6 +58,7 @@ export default function Home() {
         <DetailedReport />
         <FreeChecks />
       </div>
+      <TgCheck />
     </main>
   );
 }

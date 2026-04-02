@@ -1,0 +1,114 @@
+.root {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  background: #222222;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* soft blurred background (instead of huge SVG from Figma) */
+.bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.3;
+  filter: blur(23px);
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(900px 420px at 50% 55%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 60%),
+    radial-gradient(700px 360px at 50% 70%, rgba(154, 151, 97, 0.28) 0%, rgba(154, 151, 97, 0) 55%);
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 40px 20px;
+  gap: 75px;
+}
+
+.intro {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heading {
+  max-width: 169px; /* matches Figma mobile */
+  white-space: pre-line;
+}
+
+.leadRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.lead {
+  flex: 1 1 auto;
+}
+
+.swipeWrap {
+  flex: 0 0 auto;
+  width: 32px;
+  height: 32px;
+
+  @media (min-width: 1440px) {
+    display: none;
+  }
+}
+
+.slider {
+  width: 100%;
+}
+
+.phoneSlideImageWrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.phoneSlideImage {
+  width: 176px;
+  height: 368px;
+  object-fit: contain;
+}
+
+.cta {
+  width: 100%;
+  align-self: stretch;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 60px 40px;
+    max-width: 688px;
+    margin-inline: auto;
+  }
+
+  .heading {
+    max-width: 420px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .inner {
+    max-width: 1300px;
+    padding: 80px 70px;
+  }
+}
+
