@@ -26,7 +26,7 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 0;
-  gap: 75px;
+  gap: 40px;
   max-width: 100%;
   min-width: 0;
   margin-inline: auto;
@@ -60,6 +60,10 @@
   flex: 0 0 auto;
   width: 32px;
   height: 32px;
+}
+
+.desktopPanel {
+  display: none;
 }
 
 .slider {
@@ -132,5 +136,129 @@
 .cta {
   width: 100%;
   align-self: stretch;
+}
+
+@media (min-width: 768px) {
+  .root {
+    width: calc(100% + 80px);
+    margin-inline: -40px;
+    padding: 50px 40px;
+  }
+
+  .inner {
+    max-width: 688px;
+  }
+
+  .swipeWrap {
+    display: none;
+  }
+
+  .slider,
+  .cta {
+    display: none;
+  }
+
+  .desktopPanel {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .desktopCol {
+    width: 334px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .intro {
+    display: none;
+  }
+
+  .desktopHeading {
+    max-width: 212px;
+    white-space: pre-line;
+    width: 212px;
+  }
+
+  .desktopLead {
+    width: 334px;
+  }
+
+  .desktopCta {
+    width: 224px;
+  }
+
+  .desktopTabs {
+    width: 334px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .desktopTab {
+    position: relative;
+    width: 334px;
+    min-height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: #333333;
+    overflow: hidden;
+  }
+
+  .desktopTabActive::before {
+    content: "";
+    position: absolute;
+    left: -110px;
+    top: 0;
+    width: 200px;
+    height: 200px;
+    background: rgba(255, 255, 255, 0.05);
+    pointer-events: none;
+  }
+
+  .desktopTabText {
+    position: relative;
+    z-index: 1;
+    white-space: pre-line;
+    font-size: 16px !important;
+    line-height: 130% !important;
+  }
+
+  .desktopImageWrap {
+    position: relative;
+    width: 334px;
+    height: 610px;
+    border-radius: 24px;
+    overflow: visible;
+    flex: 0 0 auto;
+  }
+
+  .desktopImage {
+    object-fit: contain;
+    object-position: center top;
+    transform: translateY(28px) scale(1.12);
+  }
+}
+
+@media (min-width: 1440px) {
+  .root {
+    width: calc(100% + 140px);
+    margin-inline: -70px;
+    padding: 60px 70px;
+  }
+
+  .inner {
+    max-width: 1300px;
+  }
 }
 

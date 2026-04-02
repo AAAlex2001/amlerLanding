@@ -1,6 +1,7 @@
 "use client";
 
 import cn from "classnames";
+import type { ReactNode } from "react";
 import Image from "next/image";
 import { Slider, type SliderSlide } from "@/features/slider";
 import { Button, TypographyH2, TypographyP, TypographyTextMedium } from "@/shared/ui";
@@ -134,6 +135,25 @@ const defaultSlides: SliderSlide[] = [
   },
 ];
 
+const desktopTabs: { icon: ReactNode; text: string }[] = [
+  {
+    icon: <LightningGlyph className={styles.slideIcon} />,
+    text: "Проверка по адресу, QR\nили на лету @amler T82Ks21k",
+  },
+  {
+    icon: <SparklesGlyph className={styles.slideIcon} />,
+    text: "AI-оценка, риск-скор\nи портрет владельца",
+  },
+  {
+    icon: <ShieldGlyph className={styles.slideIcon} />,
+    text: "Проверка безопасности\nкошелька",
+  },
+  {
+    icon: <UsersGlyph className={styles.slideIcon} />,
+    text: "Для команд, чатов\nи P2P-сделок",
+  },
+];
+
 export function TgCheck({
   className,
   heading = "Быстрая AML-проверка\nв телеграм",
@@ -153,6 +173,40 @@ export function TgCheck({
             <div className={styles.swipeWrap} aria-hidden>
               <SwipeGlyph />
             </div>
+          </div>
+        </div>
+
+        <div className={styles.desktopPanel}>
+          <div className={styles.desktopCol}>
+            <TypographyH2 className={styles.desktopHeading}>{heading}</TypographyH2>
+            <TypographyP className={styles.desktopLead}>{lead}</TypographyP>
+            <Button variant="cta" icon={<ProfileGlyph />} className={styles.desktopCta}>
+              {ctaText}
+            </Button>
+
+            <div className={styles.desktopTabs} aria-label="Функции AML-проверки">
+              {desktopTabs.map((item, idx) => (
+                <div
+                  className={cn(styles.desktopTab, idx === 0 && styles.desktopTabActive)}
+                  key={idx}
+                >
+                  {item.icon}
+                  <TypographyTextMedium className={styles.desktopTabText}>
+                    {item.text}
+                  </TypographyTextMedium>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className={styles.desktopImageWrap} aria-hidden>
+            <Image
+              src="/banner.png"
+              alt="Превью бота в Telegram"
+              fill
+              sizes="334px"
+              className={styles.desktopImage}
+            />
           </div>
         </div>
 
